@@ -1,12 +1,9 @@
-import { createFileRoute, Navigate } from "@tanstack/react-router";
+import type { ReactNode } from "react";
+import { Navigate } from "@tanstack/react-router";
 import { useAuth } from "@/lib/auth-context";
 import { Loader2 } from "lucide-react";
 
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-function Index() {
+export function AuthGate({ children }: { children: ReactNode }) {
   const { user, loading } = useAuth();
   if (loading) {
     return (
@@ -15,5 +12,6 @@ function Index() {
       </div>
     );
   }
-  return <Navigate to={user ? "/dashboard" : "/login"} />;
+  if (!user) return <Navigate to="/login" />;
+  return <>{children}</>;
 }
