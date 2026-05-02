@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MarblePhotosRouteImport } from './routes/marble.photos'
+import { Route as MarbleCategoriesRouteImport } from './routes/marble.categories'
 
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
@@ -28,35 +30,64 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MarblePhotosRoute = MarblePhotosRouteImport.update({
+  id: '/marble/photos',
+  path: '/marble/photos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarbleCategoriesRoute = MarbleCategoriesRouteImport.update({
+  id: '/marble/categories',
+  path: '/marble/categories',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/marble/categories': typeof MarbleCategoriesRoute
+  '/marble/photos': typeof MarblePhotosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/marble/categories': typeof MarbleCategoriesRoute
+  '/marble/photos': typeof MarblePhotosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/marble/categories': typeof MarbleCategoriesRoute
+  '/marble/photos': typeof MarblePhotosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/login'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/login'
+    | '/marble/categories'
+    | '/marble/photos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/login'
-  id: '__root__' | '/' | '/dashboard' | '/login'
+  to: '/' | '/dashboard' | '/login' | '/marble/categories' | '/marble/photos'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/login'
+    | '/marble/categories'
+    | '/marble/photos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRoute
   LoginRoute: typeof LoginRoute
+  MarbleCategoriesRoute: typeof MarbleCategoriesRoute
+  MarblePhotosRoute: typeof MarblePhotosRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +113,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/marble/photos': {
+      id: '/marble/photos'
+      path: '/marble/photos'
+      fullPath: '/marble/photos'
+      preLoaderRoute: typeof MarblePhotosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marble/categories': {
+      id: '/marble/categories'
+      path: '/marble/categories'
+      fullPath: '/marble/categories'
+      preLoaderRoute: typeof MarbleCategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +134,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRoute,
   LoginRoute: LoginRoute,
+  MarbleCategoriesRoute: MarbleCategoriesRoute,
+  MarblePhotosRoute: MarblePhotosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
