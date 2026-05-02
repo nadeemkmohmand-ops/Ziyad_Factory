@@ -10,7 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SuppliersRouteImport } from './routes/suppliers'
+import { Route as SalesRouteImport } from './routes/sales'
+import { Route as PaymentsRouteImport } from './routes/payments'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as LendingRouteImport } from './routes/lending'
+import { Route as LabourRouteImport } from './routes/labour'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CustomersRouteImport } from './routes/customers'
 import { Route as IndexRouteImport } from './routes/index'
@@ -24,9 +28,29 @@ const SuppliersRoute = SuppliersRouteImport.update({
   path: '/suppliers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SalesRoute = SalesRouteImport.update({
+  id: '/sales',
+  path: '/sales',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentsRoute = PaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LendingRoute = LendingRouteImport.update({
+  id: '/lending',
+  path: '/lending',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabourRoute = LabourRouteImport.update({
+  id: '/labour',
+  path: '/labour',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -69,7 +93,11 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/customers': typeof CustomersRoute
   '/dashboard': typeof DashboardRoute
+  '/labour': typeof LabourRoute
+  '/lending': typeof LendingRoute
   '/login': typeof LoginRoute
+  '/payments': typeof PaymentsRoute
+  '/sales': typeof SalesRoute
   '/suppliers': typeof SuppliersRoute
   '/inventory/finished': typeof InventoryFinishedRoute
   '/inventory/raw': typeof InventoryRawRoute
@@ -80,7 +108,11 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/customers': typeof CustomersRoute
   '/dashboard': typeof DashboardRoute
+  '/labour': typeof LabourRoute
+  '/lending': typeof LendingRoute
   '/login': typeof LoginRoute
+  '/payments': typeof PaymentsRoute
+  '/sales': typeof SalesRoute
   '/suppliers': typeof SuppliersRoute
   '/inventory/finished': typeof InventoryFinishedRoute
   '/inventory/raw': typeof InventoryRawRoute
@@ -92,7 +124,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/customers': typeof CustomersRoute
   '/dashboard': typeof DashboardRoute
+  '/labour': typeof LabourRoute
+  '/lending': typeof LendingRoute
   '/login': typeof LoginRoute
+  '/payments': typeof PaymentsRoute
+  '/sales': typeof SalesRoute
   '/suppliers': typeof SuppliersRoute
   '/inventory/finished': typeof InventoryFinishedRoute
   '/inventory/raw': typeof InventoryRawRoute
@@ -105,7 +141,11 @@ export interface FileRouteTypes {
     | '/'
     | '/customers'
     | '/dashboard'
+    | '/labour'
+    | '/lending'
     | '/login'
+    | '/payments'
+    | '/sales'
     | '/suppliers'
     | '/inventory/finished'
     | '/inventory/raw'
@@ -116,7 +156,11 @@ export interface FileRouteTypes {
     | '/'
     | '/customers'
     | '/dashboard'
+    | '/labour'
+    | '/lending'
     | '/login'
+    | '/payments'
+    | '/sales'
     | '/suppliers'
     | '/inventory/finished'
     | '/inventory/raw'
@@ -127,7 +171,11 @@ export interface FileRouteTypes {
     | '/'
     | '/customers'
     | '/dashboard'
+    | '/labour'
+    | '/lending'
     | '/login'
+    | '/payments'
+    | '/sales'
     | '/suppliers'
     | '/inventory/finished'
     | '/inventory/raw'
@@ -139,7 +187,11 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CustomersRoute: typeof CustomersRoute
   DashboardRoute: typeof DashboardRoute
+  LabourRoute: typeof LabourRoute
+  LendingRoute: typeof LendingRoute
   LoginRoute: typeof LoginRoute
+  PaymentsRoute: typeof PaymentsRoute
+  SalesRoute: typeof SalesRoute
   SuppliersRoute: typeof SuppliersRoute
   InventoryFinishedRoute: typeof InventoryFinishedRoute
   InventoryRawRoute: typeof InventoryRawRoute
@@ -156,11 +208,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SuppliersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sales': {
+      id: '/sales'
+      path: '/sales'
+      fullPath: '/sales'
+      preLoaderRoute: typeof SalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payments': {
+      id: '/payments'
+      path: '/payments'
+      fullPath: '/payments'
+      preLoaderRoute: typeof PaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lending': {
+      id: '/lending'
+      path: '/lending'
+      fullPath: '/lending'
+      preLoaderRoute: typeof LendingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/labour': {
+      id: '/labour'
+      path: '/labour'
+      fullPath: '/labour'
+      preLoaderRoute: typeof LabourRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -219,7 +299,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CustomersRoute: CustomersRoute,
   DashboardRoute: DashboardRoute,
+  LabourRoute: LabourRoute,
+  LendingRoute: LendingRoute,
   LoginRoute: LoginRoute,
+  PaymentsRoute: PaymentsRoute,
+  SalesRoute: SalesRoute,
   SuppliersRoute: SuppliersRoute,
   InventoryFinishedRoute: InventoryFinishedRoute,
   InventoryRawRoute: InventoryRawRoute,
@@ -229,3 +313,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
