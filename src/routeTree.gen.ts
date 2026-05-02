@@ -9,13 +9,76 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SuppliersRouteImport } from './routes/suppliers'
+import { Route as SalesRouteImport } from './routes/sales'
+import { Route as SalariesRouteImport } from './routes/salaries'
+import { Route as ProductionRouteImport } from './routes/production'
+import { Route as PaymentsRouteImport } from './routes/payments'
+import { Route as MachinesRouteImport } from './routes/machines'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as LendingRouteImport } from './routes/lending'
+import { Route as LabourRouteImport } from './routes/labour'
+import { Route as ExpensesRouteImport } from './routes/expenses'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as CustomersRouteImport } from './routes/customers'
+import { Route as AttendanceRouteImport } from './routes/attendance'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SettingsUsersRouteImport } from './routes/settings.users'
+import { Route as SettingsFoundersRouteImport } from './routes/settings.founders'
+import { Route as SettingsFactoryRouteImport } from './routes/settings.factory'
+import { Route as MarblePhotosRouteImport } from './routes/marble.photos'
+import { Route as MarbleCategoriesRouteImport } from './routes/marble.categories'
+import { Route as InventoryRawRouteImport } from './routes/inventory.raw'
+import { Route as InventoryFinishedRouteImport } from './routes/inventory.finished'
 
+const SuppliersRoute = SuppliersRouteImport.update({
+  id: '/suppliers',
+  path: '/suppliers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalesRoute = SalesRouteImport.update({
+  id: '/sales',
+  path: '/sales',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalariesRoute = SalariesRouteImport.update({
+  id: '/salaries',
+  path: '/salaries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductionRoute = ProductionRouteImport.update({
+  id: '/production',
+  path: '/production',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentsRoute = PaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MachinesRoute = MachinesRouteImport.update({
+  id: '/machines',
+  path: '/machines',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LendingRoute = LendingRouteImport.update({
+  id: '/lending',
+  path: '/lending',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabourRoute = LabourRouteImport.update({
+  id: '/labour',
+  path: '/labour',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExpensesRoute = ExpensesRouteImport.update({
+  id: '/expenses',
+  path: '/expenses',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -23,49 +86,293 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CustomersRoute = CustomersRouteImport.update({
+  id: '/customers',
+  path: '/customers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AttendanceRoute = AttendanceRouteImport.update({
+  id: '/attendance',
+  path: '/attendance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsUsersRoute = SettingsUsersRouteImport.update({
+  id: '/settings/users',
+  path: '/settings/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsFoundersRoute = SettingsFoundersRouteImport.update({
+  id: '/settings/founders',
+  path: '/settings/founders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsFactoryRoute = SettingsFactoryRouteImport.update({
+  id: '/settings/factory',
+  path: '/settings/factory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarblePhotosRoute = MarblePhotosRouteImport.update({
+  id: '/marble/photos',
+  path: '/marble/photos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarbleCategoriesRoute = MarbleCategoriesRouteImport.update({
+  id: '/marble/categories',
+  path: '/marble/categories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventoryRawRoute = InventoryRawRouteImport.update({
+  id: '/inventory/raw',
+  path: '/inventory/raw',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventoryFinishedRoute = InventoryFinishedRouteImport.update({
+  id: '/inventory/finished',
+  path: '/inventory/finished',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/attendance': typeof AttendanceRoute
+  '/customers': typeof CustomersRoute
   '/dashboard': typeof DashboardRoute
+  '/expenses': typeof ExpensesRoute
+  '/labour': typeof LabourRoute
+  '/lending': typeof LendingRoute
   '/login': typeof LoginRoute
+  '/machines': typeof MachinesRoute
+  '/payments': typeof PaymentsRoute
+  '/production': typeof ProductionRoute
+  '/salaries': typeof SalariesRoute
+  '/sales': typeof SalesRoute
+  '/suppliers': typeof SuppliersRoute
+  '/inventory/finished': typeof InventoryFinishedRoute
+  '/inventory/raw': typeof InventoryRawRoute
+  '/marble/categories': typeof MarbleCategoriesRoute
+  '/marble/photos': typeof MarblePhotosRoute
+  '/settings/factory': typeof SettingsFactoryRoute
+  '/settings/founders': typeof SettingsFoundersRoute
+  '/settings/users': typeof SettingsUsersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/attendance': typeof AttendanceRoute
+  '/customers': typeof CustomersRoute
   '/dashboard': typeof DashboardRoute
+  '/expenses': typeof ExpensesRoute
+  '/labour': typeof LabourRoute
+  '/lending': typeof LendingRoute
   '/login': typeof LoginRoute
+  '/machines': typeof MachinesRoute
+  '/payments': typeof PaymentsRoute
+  '/production': typeof ProductionRoute
+  '/salaries': typeof SalariesRoute
+  '/sales': typeof SalesRoute
+  '/suppliers': typeof SuppliersRoute
+  '/inventory/finished': typeof InventoryFinishedRoute
+  '/inventory/raw': typeof InventoryRawRoute
+  '/marble/categories': typeof MarbleCategoriesRoute
+  '/marble/photos': typeof MarblePhotosRoute
+  '/settings/factory': typeof SettingsFactoryRoute
+  '/settings/founders': typeof SettingsFoundersRoute
+  '/settings/users': typeof SettingsUsersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/attendance': typeof AttendanceRoute
+  '/customers': typeof CustomersRoute
   '/dashboard': typeof DashboardRoute
+  '/expenses': typeof ExpensesRoute
+  '/labour': typeof LabourRoute
+  '/lending': typeof LendingRoute
   '/login': typeof LoginRoute
+  '/machines': typeof MachinesRoute
+  '/payments': typeof PaymentsRoute
+  '/production': typeof ProductionRoute
+  '/salaries': typeof SalariesRoute
+  '/sales': typeof SalesRoute
+  '/suppliers': typeof SuppliersRoute
+  '/inventory/finished': typeof InventoryFinishedRoute
+  '/inventory/raw': typeof InventoryRawRoute
+  '/marble/categories': typeof MarbleCategoriesRoute
+  '/marble/photos': typeof MarblePhotosRoute
+  '/settings/factory': typeof SettingsFactoryRoute
+  '/settings/founders': typeof SettingsFoundersRoute
+  '/settings/users': typeof SettingsUsersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/login'
+  fullPaths:
+    | '/'
+    | '/attendance'
+    | '/customers'
+    | '/dashboard'
+    | '/expenses'
+    | '/labour'
+    | '/lending'
+    | '/login'
+    | '/machines'
+    | '/payments'
+    | '/production'
+    | '/salaries'
+    | '/sales'
+    | '/suppliers'
+    | '/inventory/finished'
+    | '/inventory/raw'
+    | '/marble/categories'
+    | '/marble/photos'
+    | '/settings/factory'
+    | '/settings/founders'
+    | '/settings/users'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/login'
-  id: '__root__' | '/' | '/dashboard' | '/login'
+  to:
+    | '/'
+    | '/attendance'
+    | '/customers'
+    | '/dashboard'
+    | '/expenses'
+    | '/labour'
+    | '/lending'
+    | '/login'
+    | '/machines'
+    | '/payments'
+    | '/production'
+    | '/salaries'
+    | '/sales'
+    | '/suppliers'
+    | '/inventory/finished'
+    | '/inventory/raw'
+    | '/marble/categories'
+    | '/marble/photos'
+    | '/settings/factory'
+    | '/settings/founders'
+    | '/settings/users'
+  id:
+    | '__root__'
+    | '/'
+    | '/attendance'
+    | '/customers'
+    | '/dashboard'
+    | '/expenses'
+    | '/labour'
+    | '/lending'
+    | '/login'
+    | '/machines'
+    | '/payments'
+    | '/production'
+    | '/salaries'
+    | '/sales'
+    | '/suppliers'
+    | '/inventory/finished'
+    | '/inventory/raw'
+    | '/marble/categories'
+    | '/marble/photos'
+    | '/settings/factory'
+    | '/settings/founders'
+    | '/settings/users'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AttendanceRoute: typeof AttendanceRoute
+  CustomersRoute: typeof CustomersRoute
   DashboardRoute: typeof DashboardRoute
+  ExpensesRoute: typeof ExpensesRoute
+  LabourRoute: typeof LabourRoute
+  LendingRoute: typeof LendingRoute
   LoginRoute: typeof LoginRoute
+  MachinesRoute: typeof MachinesRoute
+  PaymentsRoute: typeof PaymentsRoute
+  ProductionRoute: typeof ProductionRoute
+  SalariesRoute: typeof SalariesRoute
+  SalesRoute: typeof SalesRoute
+  SuppliersRoute: typeof SuppliersRoute
+  InventoryFinishedRoute: typeof InventoryFinishedRoute
+  InventoryRawRoute: typeof InventoryRawRoute
+  MarbleCategoriesRoute: typeof MarbleCategoriesRoute
+  MarblePhotosRoute: typeof MarblePhotosRoute
+  SettingsFactoryRoute: typeof SettingsFactoryRoute
+  SettingsFoundersRoute: typeof SettingsFoundersRoute
+  SettingsUsersRoute: typeof SettingsUsersRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/suppliers': {
+      id: '/suppliers'
+      path: '/suppliers'
+      fullPath: '/suppliers'
+      preLoaderRoute: typeof SuppliersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales': {
+      id: '/sales'
+      path: '/sales'
+      fullPath: '/sales'
+      preLoaderRoute: typeof SalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/salaries': {
+      id: '/salaries'
+      path: '/salaries'
+      fullPath: '/salaries'
+      preLoaderRoute: typeof SalariesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/production': {
+      id: '/production'
+      path: '/production'
+      fullPath: '/production'
+      preLoaderRoute: typeof ProductionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payments': {
+      id: '/payments'
+      path: '/payments'
+      fullPath: '/payments'
+      preLoaderRoute: typeof PaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/machines': {
+      id: '/machines'
+      path: '/machines'
+      fullPath: '/machines'
+      preLoaderRoute: typeof MachinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lending': {
+      id: '/lending'
+      path: '/lending'
+      fullPath: '/lending'
+      preLoaderRoute: typeof LendingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/labour': {
+      id: '/labour'
+      path: '/labour'
+      fullPath: '/labour'
+      preLoaderRoute: typeof LabourRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/expenses': {
+      id: '/expenses'
+      path: '/expenses'
+      fullPath: '/expenses'
+      preLoaderRoute: typeof ExpensesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -75,6 +382,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/customers': {
+      id: '/customers'
+      path: '/customers'
+      fullPath: '/customers'
+      preLoaderRoute: typeof CustomersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/attendance': {
+      id: '/attendance'
+      path: '/attendance'
+      fullPath: '/attendance'
+      preLoaderRoute: typeof AttendanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -82,23 +403,81 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings/users': {
+      id: '/settings/users'
+      path: '/settings/users'
+      fullPath: '/settings/users'
+      preLoaderRoute: typeof SettingsUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings/founders': {
+      id: '/settings/founders'
+      path: '/settings/founders'
+      fullPath: '/settings/founders'
+      preLoaderRoute: typeof SettingsFoundersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings/factory': {
+      id: '/settings/factory'
+      path: '/settings/factory'
+      fullPath: '/settings/factory'
+      preLoaderRoute: typeof SettingsFactoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marble/photos': {
+      id: '/marble/photos'
+      path: '/marble/photos'
+      fullPath: '/marble/photos'
+      preLoaderRoute: typeof MarblePhotosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marble/categories': {
+      id: '/marble/categories'
+      path: '/marble/categories'
+      fullPath: '/marble/categories'
+      preLoaderRoute: typeof MarbleCategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventory/raw': {
+      id: '/inventory/raw'
+      path: '/inventory/raw'
+      fullPath: '/inventory/raw'
+      preLoaderRoute: typeof InventoryRawRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventory/finished': {
+      id: '/inventory/finished'
+      path: '/inventory/finished'
+      fullPath: '/inventory/finished'
+      preLoaderRoute: typeof InventoryFinishedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AttendanceRoute: AttendanceRoute,
+  CustomersRoute: CustomersRoute,
   DashboardRoute: DashboardRoute,
+  ExpensesRoute: ExpensesRoute,
+  LabourRoute: LabourRoute,
+  LendingRoute: LendingRoute,
   LoginRoute: LoginRoute,
+  MachinesRoute: MachinesRoute,
+  PaymentsRoute: PaymentsRoute,
+  ProductionRoute: ProductionRoute,
+  SalariesRoute: SalariesRoute,
+  SalesRoute: SalesRoute,
+  SuppliersRoute: SuppliersRoute,
+  InventoryFinishedRoute: InventoryFinishedRoute,
+  InventoryRawRoute: InventoryRawRoute,
+  MarbleCategoriesRoute: MarbleCategoriesRoute,
+  MarblePhotosRoute: MarblePhotosRoute,
+  SettingsFactoryRoute: SettingsFactoryRoute,
+  SettingsFoundersRoute: SettingsFoundersRoute,
+  SettingsUsersRoute: SettingsUsersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
