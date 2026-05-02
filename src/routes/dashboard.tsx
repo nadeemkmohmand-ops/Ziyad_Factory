@@ -252,7 +252,7 @@ function Dashboard() {
                 <YAxis stroke="#aaa" fontSize={12} />
                 <Tooltip
                   contentStyle={{ background: "#16213e", border: "1px solid #c9a84c40" }}
-                  formatter={(v: number) => PKR(v)}
+                  formatter={(v: unknown) => PKR(Number(v))}
                 />
                 <Bar dataKey="sales" fill="#c9a84c" radius={[6, 6, 0, 0]} />
               </BarChart>
@@ -271,7 +271,7 @@ function Dashboard() {
                 </Pie>
                 <Tooltip
                   contentStyle={{ background: "#16213e", border: "1px solid #c9a84c40" }}
-                  formatter={(v: number) => PKR(v)}
+                  formatter={(v: unknown) => PKR(Number(v))}
                 />
               </PieChart>
             </ResponsiveContainer>
@@ -289,7 +289,7 @@ function Dashboard() {
               <YAxis stroke="#aaa" fontSize={12} />
               <Tooltip
                 contentStyle={{ background: "#16213e", border: "1px solid #c9a84c40" }}
-                formatter={(v: number) => PKR(v)}
+                formatter={(v: unknown) => PKR(Number(v))}
               />
               <Legend />
               {catKeys.map((k, i) => (
