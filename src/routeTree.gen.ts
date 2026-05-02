@@ -23,6 +23,9 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CustomersRouteImport } from './routes/customers'
 import { Route as AttendanceRouteImport } from './routes/attendance'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SettingsUsersRouteImport } from './routes/settings.users'
+import { Route as SettingsFoundersRouteImport } from './routes/settings.founders'
+import { Route as SettingsFactoryRouteImport } from './routes/settings.factory'
 import { Route as MarblePhotosRouteImport } from './routes/marble.photos'
 import { Route as MarbleCategoriesRouteImport } from './routes/marble.categories'
 import { Route as InventoryRawRouteImport } from './routes/inventory.raw'
@@ -98,6 +101,21 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsUsersRoute = SettingsUsersRouteImport.update({
+  id: '/settings/users',
+  path: '/settings/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsFoundersRoute = SettingsFoundersRouteImport.update({
+  id: '/settings/founders',
+  path: '/settings/founders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsFactoryRoute = SettingsFactoryRouteImport.update({
+  id: '/settings/factory',
+  path: '/settings/factory',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MarblePhotosRoute = MarblePhotosRouteImport.update({
   id: '/marble/photos',
   path: '/marble/photos',
@@ -138,6 +156,9 @@ export interface FileRoutesByFullPath {
   '/inventory/raw': typeof InventoryRawRoute
   '/marble/categories': typeof MarbleCategoriesRoute
   '/marble/photos': typeof MarblePhotosRoute
+  '/settings/factory': typeof SettingsFactoryRoute
+  '/settings/founders': typeof SettingsFoundersRoute
+  '/settings/users': typeof SettingsUsersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -158,6 +179,9 @@ export interface FileRoutesByTo {
   '/inventory/raw': typeof InventoryRawRoute
   '/marble/categories': typeof MarbleCategoriesRoute
   '/marble/photos': typeof MarblePhotosRoute
+  '/settings/factory': typeof SettingsFactoryRoute
+  '/settings/founders': typeof SettingsFoundersRoute
+  '/settings/users': typeof SettingsUsersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -179,6 +203,9 @@ export interface FileRoutesById {
   '/inventory/raw': typeof InventoryRawRoute
   '/marble/categories': typeof MarbleCategoriesRoute
   '/marble/photos': typeof MarblePhotosRoute
+  '/settings/factory': typeof SettingsFactoryRoute
+  '/settings/founders': typeof SettingsFoundersRoute
+  '/settings/users': typeof SettingsUsersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -201,6 +228,9 @@ export interface FileRouteTypes {
     | '/inventory/raw'
     | '/marble/categories'
     | '/marble/photos'
+    | '/settings/factory'
+    | '/settings/founders'
+    | '/settings/users'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -221,6 +251,9 @@ export interface FileRouteTypes {
     | '/inventory/raw'
     | '/marble/categories'
     | '/marble/photos'
+    | '/settings/factory'
+    | '/settings/founders'
+    | '/settings/users'
   id:
     | '__root__'
     | '/'
@@ -241,6 +274,9 @@ export interface FileRouteTypes {
     | '/inventory/raw'
     | '/marble/categories'
     | '/marble/photos'
+    | '/settings/factory'
+    | '/settings/founders'
+    | '/settings/users'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -262,6 +298,9 @@ export interface RootRouteChildren {
   InventoryRawRoute: typeof InventoryRawRoute
   MarbleCategoriesRoute: typeof MarbleCategoriesRoute
   MarblePhotosRoute: typeof MarblePhotosRoute
+  SettingsFactoryRoute: typeof SettingsFactoryRoute
+  SettingsFoundersRoute: typeof SettingsFoundersRoute
+  SettingsUsersRoute: typeof SettingsUsersRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -364,6 +403,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings/users': {
+      id: '/settings/users'
+      path: '/settings/users'
+      fullPath: '/settings/users'
+      preLoaderRoute: typeof SettingsUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings/founders': {
+      id: '/settings/founders'
+      path: '/settings/founders'
+      fullPath: '/settings/founders'
+      preLoaderRoute: typeof SettingsFoundersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings/factory': {
+      id: '/settings/factory'
+      path: '/settings/factory'
+      fullPath: '/settings/factory'
+      preLoaderRoute: typeof SettingsFactoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/marble/photos': {
       id: '/marble/photos'
       path: '/marble/photos'
@@ -414,6 +474,9 @@ const rootRouteChildren: RootRouteChildren = {
   InventoryRawRoute: InventoryRawRoute,
   MarbleCategoriesRoute: MarbleCategoriesRoute,
   MarblePhotosRoute: MarblePhotosRoute,
+  SettingsFactoryRoute: SettingsFactoryRoute,
+  SettingsFoundersRoute: SettingsFoundersRoute,
+  SettingsUsersRoute: SettingsUsersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
