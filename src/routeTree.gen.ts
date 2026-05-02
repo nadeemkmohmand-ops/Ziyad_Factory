@@ -9,12 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SuppliersRouteImport } from './routes/suppliers'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as CustomersRouteImport } from './routes/customers'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MarblePhotosRouteImport } from './routes/marble.photos'
 import { Route as MarbleCategoriesRouteImport } from './routes/marble.categories'
+import { Route as InventoryRawRouteImport } from './routes/inventory.raw'
+import { Route as InventoryFinishedRouteImport } from './routes/inventory.finished'
 
+const SuppliersRoute = SuppliersRouteImport.update({
+  id: '/suppliers',
+  path: '/suppliers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -23,6 +32,11 @@ const LoginRoute = LoginRouteImport.update({
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomersRoute = CustomersRouteImport.update({
+  id: '/customers',
+  path: '/customers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -40,26 +54,48 @@ const MarbleCategoriesRoute = MarbleCategoriesRouteImport.update({
   path: '/marble/categories',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InventoryRawRoute = InventoryRawRouteImport.update({
+  id: '/inventory/raw',
+  path: '/inventory/raw',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventoryFinishedRoute = InventoryFinishedRouteImport.update({
+  id: '/inventory/finished',
+  path: '/inventory/finished',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/customers': typeof CustomersRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/suppliers': typeof SuppliersRoute
+  '/inventory/finished': typeof InventoryFinishedRoute
+  '/inventory/raw': typeof InventoryRawRoute
   '/marble/categories': typeof MarbleCategoriesRoute
   '/marble/photos': typeof MarblePhotosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/customers': typeof CustomersRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/suppliers': typeof SuppliersRoute
+  '/inventory/finished': typeof InventoryFinishedRoute
+  '/inventory/raw': typeof InventoryRawRoute
   '/marble/categories': typeof MarbleCategoriesRoute
   '/marble/photos': typeof MarblePhotosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/customers': typeof CustomersRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/suppliers': typeof SuppliersRoute
+  '/inventory/finished': typeof InventoryFinishedRoute
+  '/inventory/raw': typeof InventoryRawRoute
   '/marble/categories': typeof MarbleCategoriesRoute
   '/marble/photos': typeof MarblePhotosRoute
 }
@@ -67,31 +103,59 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/customers'
     | '/dashboard'
     | '/login'
+    | '/suppliers'
+    | '/inventory/finished'
+    | '/inventory/raw'
     | '/marble/categories'
     | '/marble/photos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/login' | '/marble/categories' | '/marble/photos'
+  to:
+    | '/'
+    | '/customers'
+    | '/dashboard'
+    | '/login'
+    | '/suppliers'
+    | '/inventory/finished'
+    | '/inventory/raw'
+    | '/marble/categories'
+    | '/marble/photos'
   id:
     | '__root__'
     | '/'
+    | '/customers'
     | '/dashboard'
     | '/login'
+    | '/suppliers'
+    | '/inventory/finished'
+    | '/inventory/raw'
     | '/marble/categories'
     | '/marble/photos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CustomersRoute: typeof CustomersRoute
   DashboardRoute: typeof DashboardRoute
   LoginRoute: typeof LoginRoute
+  SuppliersRoute: typeof SuppliersRoute
+  InventoryFinishedRoute: typeof InventoryFinishedRoute
+  InventoryRawRoute: typeof InventoryRawRoute
   MarbleCategoriesRoute: typeof MarbleCategoriesRoute
   MarblePhotosRoute: typeof MarblePhotosRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/suppliers': {
+      id: '/suppliers'
+      path: '/suppliers'
+      fullPath: '/suppliers'
+      preLoaderRoute: typeof SuppliersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -104,6 +168,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customers': {
+      id: '/customers'
+      path: '/customers'
+      fullPath: '/customers'
+      preLoaderRoute: typeof CustomersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -127,13 +198,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarbleCategoriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/inventory/raw': {
+      id: '/inventory/raw'
+      path: '/inventory/raw'
+      fullPath: '/inventory/raw'
+      preLoaderRoute: typeof InventoryRawRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventory/finished': {
+      id: '/inventory/finished'
+      path: '/inventory/finished'
+      fullPath: '/inventory/finished'
+      preLoaderRoute: typeof InventoryFinishedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CustomersRoute: CustomersRoute,
   DashboardRoute: DashboardRoute,
   LoginRoute: LoginRoute,
+  SuppliersRoute: SuppliersRoute,
+  InventoryFinishedRoute: InventoryFinishedRoute,
+  InventoryRawRoute: InventoryRawRoute,
   MarbleCategoriesRoute: MarbleCategoriesRoute,
   MarblePhotosRoute: MarblePhotosRoute,
 }
