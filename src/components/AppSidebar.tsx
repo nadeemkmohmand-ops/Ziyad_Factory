@@ -16,6 +16,9 @@ import {
   Image as ImageIcon,
   UserCog,
   LogOut,
+  BarChart3,
+  ShieldCheck,
+  Globe,
 } from "lucide-react";
 import {
   Sidebar,
@@ -71,20 +74,28 @@ const groups = [
     ],
   },
   {
-    label: "Settings",
+    label: "Reports",
     items: [
-      { title: "Factory Info", url: "/settings/factory", icon: Factory },
-      { title: "Founders", url: "/settings/founders", icon: Users },
-      { title: "Users & Roles", url: "/settings/users", icon: UserCog },
+      { title: "Reports", url: "/reports", icon: BarChart3 },
     ],
   },
-];
+  {
+    label: "Settings",
+    items: [
+      { title: "Factory Info", url: "/settings/factory", icon: Factory, adminOnly: true },
+      { title: "Founders", url: "/settings/founders", icon: Users, adminOnly: true },
+      { title: "Users & Roles", url: "/settings/users", icon: UserCog, adminOnly: true },
+      { title: "Admin Panel", url: "/settings/admin", icon: ShieldCheck, adminOnly: true },
+      { title: "Public Page", url: "/public", icon: Globe },
+    ],
+  },
+] as const;
 
 export function AppSidebar() {
   const { state } = useSidebar();
   const collapsed = state === "collapsed";
   const path = useRouterState({ select: (r) => r.location.pathname });
-  const { profile, role, signOut } = useAuth();
+  const { profile, role, signOut, hasRole } = useAuth();
 
   return (
     <Sidebar collapsible="icon" className="marble-texture border-r border-sidebar-border">
@@ -110,7 +121,7 @@ export function AppSidebar() {
             {!collapsed && <SidebarGroupLabel>{g.label}</SidebarGroupLabel>}
             <SidebarGroupContent>
               <SidebarMenu>
-                {g.items.map((item) => {
+                {g.items.filter((it) => !("adminOnly" in it && it.adminOnly) || hasRole("admin")).map((item) => {
                   const active = path === item.url || path.startsWith(item.url + "/");
                   return (
                     <SidebarMenuItem key={item.url}>
