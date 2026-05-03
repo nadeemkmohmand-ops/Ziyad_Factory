@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useAuth } from "@/lib/auth-context";
@@ -150,6 +150,9 @@ function LoginPage() {
             </TabsContent>
           </Tabs>
         </Card>
+        <div className="text-center mt-6">
+          <Link to="/public" className="font-urdu text-primary hover:underline">فیکٹری کے بارے میں</Link>
+        </div>
       </motion.div>
     </div>
   );

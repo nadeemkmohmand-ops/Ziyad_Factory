@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SuppliersRouteImport } from './routes/suppliers'
 import { Route as SalesRouteImport } from './routes/sales'
 import { Route as SalariesRouteImport } from './routes/salaries'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as PublicRouteImport } from './routes/public'
 import { Route as ProductionRouteImport } from './routes/production'
 import { Route as PaymentsRouteImport } from './routes/payments'
 import { Route as MachinesRouteImport } from './routes/machines'
@@ -26,6 +28,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as SettingsUsersRouteImport } from './routes/settings.users'
 import { Route as SettingsFoundersRouteImport } from './routes/settings.founders'
 import { Route as SettingsFactoryRouteImport } from './routes/settings.factory'
+import { Route as SettingsAdminRouteImport } from './routes/settings.admin'
 import { Route as MarblePhotosRouteImport } from './routes/marble.photos'
 import { Route as MarbleCategoriesRouteImport } from './routes/marble.categories'
 import { Route as InventoryRawRouteImport } from './routes/inventory.raw'
@@ -44,6 +47,16 @@ const SalesRoute = SalesRouteImport.update({
 const SalariesRoute = SalariesRouteImport.update({
   id: '/salaries',
   path: '/salaries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicRoute = PublicRouteImport.update({
+  id: '/public',
+  path: '/public',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductionRoute = ProductionRouteImport.update({
@@ -116,6 +129,11 @@ const SettingsFactoryRoute = SettingsFactoryRouteImport.update({
   path: '/settings/factory',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsAdminRoute = SettingsAdminRouteImport.update({
+  id: '/settings/admin',
+  path: '/settings/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MarblePhotosRoute = MarblePhotosRouteImport.update({
   id: '/marble/photos',
   path: '/marble/photos',
@@ -149,6 +167,8 @@ export interface FileRoutesByFullPath {
   '/machines': typeof MachinesRoute
   '/payments': typeof PaymentsRoute
   '/production': typeof ProductionRoute
+  '/public': typeof PublicRoute
+  '/reports': typeof ReportsRoute
   '/salaries': typeof SalariesRoute
   '/sales': typeof SalesRoute
   '/suppliers': typeof SuppliersRoute
@@ -156,6 +176,7 @@ export interface FileRoutesByFullPath {
   '/inventory/raw': typeof InventoryRawRoute
   '/marble/categories': typeof MarbleCategoriesRoute
   '/marble/photos': typeof MarblePhotosRoute
+  '/settings/admin': typeof SettingsAdminRoute
   '/settings/factory': typeof SettingsFactoryRoute
   '/settings/founders': typeof SettingsFoundersRoute
   '/settings/users': typeof SettingsUsersRoute
@@ -172,6 +193,8 @@ export interface FileRoutesByTo {
   '/machines': typeof MachinesRoute
   '/payments': typeof PaymentsRoute
   '/production': typeof ProductionRoute
+  '/public': typeof PublicRoute
+  '/reports': typeof ReportsRoute
   '/salaries': typeof SalariesRoute
   '/sales': typeof SalesRoute
   '/suppliers': typeof SuppliersRoute
@@ -179,6 +202,7 @@ export interface FileRoutesByTo {
   '/inventory/raw': typeof InventoryRawRoute
   '/marble/categories': typeof MarbleCategoriesRoute
   '/marble/photos': typeof MarblePhotosRoute
+  '/settings/admin': typeof SettingsAdminRoute
   '/settings/factory': typeof SettingsFactoryRoute
   '/settings/founders': typeof SettingsFoundersRoute
   '/settings/users': typeof SettingsUsersRoute
@@ -196,6 +220,8 @@ export interface FileRoutesById {
   '/machines': typeof MachinesRoute
   '/payments': typeof PaymentsRoute
   '/production': typeof ProductionRoute
+  '/public': typeof PublicRoute
+  '/reports': typeof ReportsRoute
   '/salaries': typeof SalariesRoute
   '/sales': typeof SalesRoute
   '/suppliers': typeof SuppliersRoute
@@ -203,6 +229,7 @@ export interface FileRoutesById {
   '/inventory/raw': typeof InventoryRawRoute
   '/marble/categories': typeof MarbleCategoriesRoute
   '/marble/photos': typeof MarblePhotosRoute
+  '/settings/admin': typeof SettingsAdminRoute
   '/settings/factory': typeof SettingsFactoryRoute
   '/settings/founders': typeof SettingsFoundersRoute
   '/settings/users': typeof SettingsUsersRoute
@@ -221,6 +248,8 @@ export interface FileRouteTypes {
     | '/machines'
     | '/payments'
     | '/production'
+    | '/public'
+    | '/reports'
     | '/salaries'
     | '/sales'
     | '/suppliers'
@@ -228,6 +257,7 @@ export interface FileRouteTypes {
     | '/inventory/raw'
     | '/marble/categories'
     | '/marble/photos'
+    | '/settings/admin'
     | '/settings/factory'
     | '/settings/founders'
     | '/settings/users'
@@ -244,6 +274,8 @@ export interface FileRouteTypes {
     | '/machines'
     | '/payments'
     | '/production'
+    | '/public'
+    | '/reports'
     | '/salaries'
     | '/sales'
     | '/suppliers'
@@ -251,6 +283,7 @@ export interface FileRouteTypes {
     | '/inventory/raw'
     | '/marble/categories'
     | '/marble/photos'
+    | '/settings/admin'
     | '/settings/factory'
     | '/settings/founders'
     | '/settings/users'
@@ -267,6 +300,8 @@ export interface FileRouteTypes {
     | '/machines'
     | '/payments'
     | '/production'
+    | '/public'
+    | '/reports'
     | '/salaries'
     | '/sales'
     | '/suppliers'
@@ -274,6 +309,7 @@ export interface FileRouteTypes {
     | '/inventory/raw'
     | '/marble/categories'
     | '/marble/photos'
+    | '/settings/admin'
     | '/settings/factory'
     | '/settings/founders'
     | '/settings/users'
@@ -291,6 +327,8 @@ export interface RootRouteChildren {
   MachinesRoute: typeof MachinesRoute
   PaymentsRoute: typeof PaymentsRoute
   ProductionRoute: typeof ProductionRoute
+  PublicRoute: typeof PublicRoute
+  ReportsRoute: typeof ReportsRoute
   SalariesRoute: typeof SalariesRoute
   SalesRoute: typeof SalesRoute
   SuppliersRoute: typeof SuppliersRoute
@@ -298,6 +336,7 @@ export interface RootRouteChildren {
   InventoryRawRoute: typeof InventoryRawRoute
   MarbleCategoriesRoute: typeof MarbleCategoriesRoute
   MarblePhotosRoute: typeof MarblePhotosRoute
+  SettingsAdminRoute: typeof SettingsAdminRoute
   SettingsFactoryRoute: typeof SettingsFactoryRoute
   SettingsFoundersRoute: typeof SettingsFoundersRoute
   SettingsUsersRoute: typeof SettingsUsersRoute
@@ -324,6 +363,20 @@ declare module '@tanstack/react-router' {
       path: '/salaries'
       fullPath: '/salaries'
       preLoaderRoute: typeof SalariesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/public': {
+      id: '/public'
+      path: '/public'
+      fullPath: '/public'
+      preLoaderRoute: typeof PublicRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/production': {
@@ -424,6 +477,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsFactoryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings/admin': {
+      id: '/settings/admin'
+      path: '/settings/admin'
+      fullPath: '/settings/admin'
+      preLoaderRoute: typeof SettingsAdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/marble/photos': {
       id: '/marble/photos'
       path: '/marble/photos'
@@ -467,6 +527,8 @@ const rootRouteChildren: RootRouteChildren = {
   MachinesRoute: MachinesRoute,
   PaymentsRoute: PaymentsRoute,
   ProductionRoute: ProductionRoute,
+  PublicRoute: PublicRoute,
+  ReportsRoute: ReportsRoute,
   SalariesRoute: SalariesRoute,
   SalesRoute: SalesRoute,
   SuppliersRoute: SuppliersRoute,
@@ -474,6 +536,7 @@ const rootRouteChildren: RootRouteChildren = {
   InventoryRawRoute: InventoryRawRoute,
   MarbleCategoriesRoute: MarbleCategoriesRoute,
   MarblePhotosRoute: MarblePhotosRoute,
+  SettingsAdminRoute: SettingsAdminRoute,
   SettingsFactoryRoute: SettingsFactoryRoute,
   SettingsFoundersRoute: SettingsFoundersRoute,
   SettingsUsersRoute: SettingsUsersRoute,
