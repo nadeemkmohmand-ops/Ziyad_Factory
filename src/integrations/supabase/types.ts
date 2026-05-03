@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      app_settings: {
+        Row: {
+          default_currency: string
+          default_unit: string
+          id: string
+          low_stock_threshold_tons: number
+          overtime_multiplier: number
+          updated_at: string
+          working_days_per_week: number
+          working_hours_per_day: number
+        }
+        Insert: {
+          default_currency?: string
+          default_unit?: string
+          id?: string
+          low_stock_threshold_tons?: number
+          overtime_multiplier?: number
+          updated_at?: string
+          working_days_per_week?: number
+          working_hours_per_day?: number
+        }
+        Update: {
+          default_currency?: string
+          default_unit?: string
+          id?: string
+          low_stock_threshold_tons?: number
+          overtime_multiplier?: number
+          updated_at?: string
+          working_days_per_week?: number
+          working_hours_per_day?: number
+        }
+        Relationships: []
+      }
       attendance: {
         Row: {
           date: string | null
@@ -364,6 +397,7 @@ export type Database = {
           name_urdu: string
           price_per_slab: number | null
           price_per_sqft: number | null
+          show_price: boolean
           unit: string
         }
         Insert: {
@@ -375,6 +409,7 @@ export type Database = {
           name_urdu: string
           price_per_slab?: number | null
           price_per_sqft?: number | null
+          show_price?: boolean
           unit?: string
         }
         Update: {
@@ -386,6 +421,7 @@ export type Database = {
           name_urdu?: string
           price_per_slab?: number | null
           price_per_sqft?: number | null
+          show_price?: boolean
           unit?: string
         }
         Relationships: []
@@ -424,6 +460,39 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      marble_price_history: {
+        Row: {
+          category_id: string
+          changed_at: string
+          changed_by: string | null
+          id: string
+          new_price_per_slab: number | null
+          new_price_per_sqft: number | null
+          old_price_per_slab: number | null
+          old_price_per_sqft: number | null
+        }
+        Insert: {
+          category_id: string
+          changed_at?: string
+          changed_by?: string | null
+          id?: string
+          new_price_per_slab?: number | null
+          new_price_per_sqft?: number | null
+          old_price_per_slab?: number | null
+          old_price_per_sqft?: number | null
+        }
+        Update: {
+          category_id?: string
+          changed_at?: string
+          changed_by?: string | null
+          id?: string
+          new_price_per_slab?: number | null
+          new_price_per_sqft?: number | null
+          old_price_per_slab?: number | null
+          old_price_per_sqft?: number | null
+        }
+        Relationships: []
       }
       payments: {
         Row: {
