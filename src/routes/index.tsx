@@ -15,5 +15,5 @@ function Index() {
       </div>
     );
   }
-  return <Navigate to={user ? "/dashboard" : "/login"} />;
+  return <Navigate to={user ? "/dashboard" : "/public"} />;
 }
