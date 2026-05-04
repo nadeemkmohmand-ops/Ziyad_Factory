@@ -24,6 +24,7 @@ import { Route as ExpensesRouteImport } from './routes/expenses'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CustomersRouteImport } from './routes/customers'
 import { Route as AttendanceRouteImport } from './routes/attendance'
+import { Route as HomeRouteImport } from './routes/home'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SettingsUsersRouteImport } from './routes/settings.users'
 import { Route as SettingsFoundersRouteImport } from './routes/settings.founders'
@@ -107,6 +108,11 @@ const CustomersRoute = CustomersRouteImport.update({
 const AttendanceRoute = AttendanceRouteImport.update({
   id: '/attendance',
   path: '/attendance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -456,6 +462,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings/users': {
       id: '/settings/users'
       path: '/settings/users'
@@ -517,6 +530,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HomeRoute: HomeRoute,
   AttendanceRoute: AttendanceRoute,
   CustomersRoute: CustomersRoute,
   DashboardRoute: DashboardRoute,
