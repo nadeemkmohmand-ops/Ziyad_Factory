@@ -19,6 +19,7 @@ import {
   BarChart3,
   ShieldCheck,
   Globe,
+  Home,
 } from "lucide-react";
 import {
   Sidebar,
@@ -40,6 +41,7 @@ const groups = [
   {
     label: "Overview",
     items: [
+      { title: "Home", url: "/home", icon: Home },
       { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
     ],
   },
