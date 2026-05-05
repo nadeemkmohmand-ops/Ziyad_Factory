@@ -21,7 +21,7 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell, LineChart, Line, Legend,
 } from "recharts";
-import * as XLSX from "xlsx";
+
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
