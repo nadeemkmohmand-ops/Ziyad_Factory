@@ -32,7 +32,7 @@ function LoginPage() {
     const { error } = await signIn(email, password);
     setLoading(false);
     if (error) toast.error(error);
-    else toast.success("Welcome back");
+    else toast.success("خوش آمدید");
   };
 
   const handleSignUp = async (e: React.FormEvent) => {
@@ -41,11 +41,11 @@ function LoginPage() {
     const { error } = await signUp(email, password, fullName);
     setLoading(false);
     if (error) toast.error(error);
-    else toast.success("Account created — please check your email to confirm.");
+    else toast.success("اکاؤنٹ بن گیا — براہِ کرم اپنا ای میل تصدیق کریں۔");
   };
 
   return (
-    <div className="min-h-screen marble-texture grid place-items-center p-4">
+    <div className="min-h-screen marble-texture grid place-items-center p-4" dir="rtl">
       <motion.div
         initial={{ opacity: 0, y: 16, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -53,26 +53,24 @@ function LoginPage() {
         className="w-full max-w-md"
       >
         <div className="text-center mb-8">
-          <div className="inline-flex h-16 w-16 rounded-2xl bg-primary text-primary-foreground items-center justify-center font-display font-bold text-3xl gold-glow mb-4">
+          <div className="inline-flex h-16 w-16 rounded-2xl bg-primary text-primary-foreground items-center justify-center font-urdu font-bold text-3xl gold-glow mb-4">
             م
           </div>
-          <h1 className="font-display text-3xl text-primary">المدینہ فیکٹری</h1>
-          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mt-1">
-            Al-Madina Factory
-          </p>
+          <h1 className="font-urdu text-4xl text-primary">المدینہ فیکٹری</h1>
+          <p className="font-urdu text-sm text-muted-foreground mt-1">ماربل مینیجر — انتظامی نظام</p>
         </div>
 
         <Card className="p-6 gold-shadow border-primary/20 bg-card/90 backdrop-blur">
           <Tabs defaultValue="signin">
             <TabsList className="w-full grid grid-cols-2 mb-4">
-              <TabsTrigger value="signin">داخل ہوں / Sign In</TabsTrigger>
-              <TabsTrigger value="signup">اکاؤنٹ بنائیں / Register</TabsTrigger>
+              <TabsTrigger value="signin" className="font-urdu text-base">داخل ہوں</TabsTrigger>
+              <TabsTrigger value="signup" className="font-urdu text-base">اکاؤنٹ بنائیں</TabsTrigger>
             </TabsList>
 
             <TabsContent value="signin">
               <form onSubmit={handleSignIn} className="space-y-4">
                 <div>
-                  <Label htmlFor="si-email">Email</Label>
+                  <Label htmlFor="si-email" className="font-urdu">ای میل</Label>
                   <Input
                     id="si-email"
                     type="email"
@@ -80,25 +78,27 @@ function LoginPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@factory.pk"
+                    dir="ltr"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="si-pass">Password</Label>
+                  <Label htmlFor="si-pass" className="font-urdu">پاس ورڈ</Label>
                   <Input
                     id="si-pass"
                     type="password"
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    dir="ltr"
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-medium"
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-urdu text-base"
                   disabled={loading}
                 >
                   {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-                  Sign In
+                  داخل ہوں
                 </Button>
               </form>
             </TabsContent>
@@ -106,7 +106,7 @@ function LoginPage() {
             <TabsContent value="signup">
               <form onSubmit={handleSignUp} className="space-y-4">
                 <div>
-                  <Label htmlFor="su-name">Full name</Label>
+                  <Label htmlFor="su-name" className="font-urdu">پورا نام</Label>
                   <Input
                     id="su-name"
                     required
@@ -115,17 +115,18 @@ function LoginPage() {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="su-email">Email</Label>
+                  <Label htmlFor="su-email" className="font-urdu">ای میل</Label>
                   <Input
                     id="su-email"
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    dir="ltr"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="su-pass">Password</Label>
+                  <Label htmlFor="su-pass" className="font-urdu">پاس ورڈ</Label>
                   <Input
                     id="su-pass"
                     type="password"
@@ -133,18 +134,19 @@ function LoginPage() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    dir="ltr"
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-urdu text-base"
                   disabled={loading}
                 >
                   {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-                  Create Account
+                  اکاؤنٹ بنائیں
                 </Button>
-                <p className="text-xs text-muted-foreground text-center">
-                  The first account becomes the admin automatically.
+                <p className="font-urdu text-xs text-muted-foreground text-center">
+                  پہلا اکاؤنٹ خودبخود ایڈمن بن جاتا ہے۔
                 </p>
               </form>
             </TabsContent>
