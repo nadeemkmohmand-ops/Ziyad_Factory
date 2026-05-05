@@ -13,56 +13,56 @@ import { Button } from "@/components/ui/button";
 
 const groups = [
   {
-    label: "عمومی / Overview",
+    label: "عمومی",
     items: [
-      { title: "ہوم / Home", url: "/home", icon: Home },
-      { title: "ڈیش بورڈ / Dashboard", url: "/dashboard", icon: LayoutDashboard },
+      { title: "ہوم", url: "/home", icon: Home },
+      { title: "ڈیش بورڈ", url: "/dashboard", icon: LayoutDashboard },
     ],
   },
   {
-    label: "ماربل / Marble",
+    label: "ماربل",
     items: [
-      { title: "کیٹگریز / Categories", url: "/marble/categories", icon: Layers },
-      { title: "تصاویر / Photos", url: "/marble/photos", icon: ImageIcon },
-      { title: "خام پتھر / Raw Rock", url: "/inventory/raw", icon: Package },
-      { title: "تیار اسٹاک / Finished Stock", url: "/inventory/finished", icon: Package },
-      { title: "پیداوار / Production", url: "/production", icon: Factory },
+      { title: "اقسام", url: "/marble/categories", icon: Layers },
+      { title: "تصاویر", url: "/marble/photos", icon: ImageIcon },
+      { title: "خام پتھر", url: "/inventory/raw", icon: Package },
+      { title: "تیار اسٹاک", url: "/inventory/finished", icon: Package },
+      { title: "پیداوار", url: "/production", icon: Factory },
     ],
   },
   {
-    label: "سیلز اور مالیات / Sales & Finance",
+    label: "فروخت اور مالیات",
     items: [
-      { title: "گاہک / Customers", url: "/customers", icon: Users },
-      { title: "سپلائر / Suppliers", url: "/suppliers", icon: Truck },
-      { title: "سیلز آرڈر / Sales Orders", url: "/sales", icon: ShoppingCart },
-      { title: "ادائیگیاں / Payments", url: "/payments", icon: Wallet },
-      { title: "قرض / Lending & Borrow", url: "/lending", icon: Banknote },
-      { title: "اخراجات / Expenses", url: "/expenses", icon: Receipt },
+      { title: "گاہک", url: "/customers", icon: Users },
+      { title: "سپلائر", url: "/suppliers", icon: Truck },
+      { title: "فروخت کے آرڈر", url: "/sales", icon: ShoppingCart },
+      { title: "ادائیگیاں", url: "/payments", icon: Wallet },
+      { title: "قرض و ادھار", url: "/lending", icon: Banknote },
+      { title: "اخراجات", url: "/expenses", icon: Receipt },
     ],
   },
   {
-    label: "افرادی قوت / Workforce",
+    label: "افرادی قوت",
     items: [
-      { title: "مزدور / Labour", url: "/labour", icon: HardHat },
-      { title: "حاضری / Attendance", url: "/attendance", icon: CalendarCheck },
-      { title: "تنخواہیں / Salaries", url: "/salaries", icon: Wallet },
-      { title: "مشینیں / Machines", url: "/machines", icon: Cog },
+      { title: "مزدور", url: "/labour", icon: HardHat },
+      { title: "حاضری", url: "/attendance", icon: CalendarCheck },
+      { title: "تنخواہیں", url: "/salaries", icon: Wallet },
+      { title: "مشینیں", url: "/machines", icon: Cog },
     ],
   },
   {
-    label: "رپورٹس / Reports",
+    label: "رپورٹس",
     items: [
-      { title: "رپورٹس / Reports", url: "/reports", icon: BarChart3 },
+      { title: "رپورٹس", url: "/reports", icon: BarChart3 },
     ],
   },
   {
-    label: "سیٹنگز / Settings",
+    label: "ترتیبات",
     items: [
-      { title: "فیکٹری معلومات / Factory Info", url: "/settings/factory", icon: Factory, adminOnly: true },
-      { title: "بانی / Founders", url: "/settings/founders", icon: Users, adminOnly: true },
-      { title: "صارفین / Users & Roles", url: "/settings/users", icon: UserCog, adminOnly: true },
-      { title: "ایڈمن پینل / Admin Panel", url: "/settings/admin", icon: ShieldCheck, adminOnly: true },
-      { title: "عوامی صفحہ / Public Page", url: "/public", icon: Globe },
+      { title: "فیکٹری معلومات", url: "/settings/factory", icon: Factory, adminOnly: true },
+      { title: "بانیان", url: "/settings/founders", icon: Users, adminOnly: true },
+      { title: "صارفین و کردار", url: "/settings/users", icon: UserCog, adminOnly: true },
+      { title: "ایڈمن پینل", url: "/settings/admin", icon: ShieldCheck, adminOnly: true },
+      { title: "عوامی صفحہ", url: "/public", icon: Globe },
     ],
   },
 ] as const;
@@ -81,11 +81,9 @@ export function AppSidebar() {
             م
           </div>
           {!collapsed && (
-            <div className="leading-tight">
-              <div className="font-urdu text-base font-semibold text-primary">المدینہ فیکٹری</div>
-              <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                Al-Madina Factory
-              </div>
+            <div className="leading-tight text-right" dir="rtl">
+              <div className="font-urdu text-lg font-semibold text-primary">المدینہ فیکٹری</div>
+              <div className="font-urdu text-[11px] text-muted-foreground">ماربل مینیجر</div>
             </div>
           )}
         </div>
@@ -129,7 +127,7 @@ export function AppSidebar() {
           onClick={() => signOut()}
         >
           <LogOut className="h-4 w-4" />
-          {!collapsed && <span className="ml-2 font-urdu">لاگ آؤٹ / Sign out</span>}
+          {!collapsed && <span className="ml-2 font-urdu">لاگ آؤٹ</span>}
         </Button>
       </SidebarFooter>
     </Sidebar>
