@@ -20,11 +20,11 @@ import { Route as MachinesRouteImport } from './routes/machines'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as LendingRouteImport } from './routes/lending'
 import { Route as LabourRouteImport } from './routes/labour'
+import { Route as HomeRouteImport } from './routes/home'
 import { Route as ExpensesRouteImport } from './routes/expenses'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CustomersRouteImport } from './routes/customers'
 import { Route as AttendanceRouteImport } from './routes/attendance'
-import { Route as HomeRouteImport } from './routes/home'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SettingsUsersRouteImport } from './routes/settings.users'
 import { Route as SettingsFoundersRouteImport } from './routes/settings.founders'
@@ -90,6 +90,11 @@ const LabourRoute = LabourRouteImport.update({
   path: '/labour',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ExpensesRoute = ExpensesRouteImport.update({
   id: '/expenses',
   path: '/expenses',
@@ -108,11 +113,6 @@ const CustomersRoute = CustomersRouteImport.update({
 const AttendanceRoute = AttendanceRouteImport.update({
   id: '/attendance',
   path: '/attendance',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HomeRoute = HomeRouteImport.update({
-  id: '/home',
-  path: '/home',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -167,6 +167,7 @@ export interface FileRoutesByFullPath {
   '/customers': typeof CustomersRoute
   '/dashboard': typeof DashboardRoute
   '/expenses': typeof ExpensesRoute
+  '/home': typeof HomeRoute
   '/labour': typeof LabourRoute
   '/lending': typeof LendingRoute
   '/login': typeof LoginRoute
@@ -193,6 +194,7 @@ export interface FileRoutesByTo {
   '/customers': typeof CustomersRoute
   '/dashboard': typeof DashboardRoute
   '/expenses': typeof ExpensesRoute
+  '/home': typeof HomeRoute
   '/labour': typeof LabourRoute
   '/lending': typeof LendingRoute
   '/login': typeof LoginRoute
@@ -220,6 +222,7 @@ export interface FileRoutesById {
   '/customers': typeof CustomersRoute
   '/dashboard': typeof DashboardRoute
   '/expenses': typeof ExpensesRoute
+  '/home': typeof HomeRoute
   '/labour': typeof LabourRoute
   '/lending': typeof LendingRoute
   '/login': typeof LoginRoute
@@ -248,6 +251,7 @@ export interface FileRouteTypes {
     | '/customers'
     | '/dashboard'
     | '/expenses'
+    | '/home'
     | '/labour'
     | '/lending'
     | '/login'
@@ -274,6 +278,7 @@ export interface FileRouteTypes {
     | '/customers'
     | '/dashboard'
     | '/expenses'
+    | '/home'
     | '/labour'
     | '/lending'
     | '/login'
@@ -300,6 +305,7 @@ export interface FileRouteTypes {
     | '/customers'
     | '/dashboard'
     | '/expenses'
+    | '/home'
     | '/labour'
     | '/lending'
     | '/login'
@@ -327,6 +333,7 @@ export interface RootRouteChildren {
   CustomersRoute: typeof CustomersRoute
   DashboardRoute: typeof DashboardRoute
   ExpensesRoute: typeof ExpensesRoute
+  HomeRoute: typeof HomeRoute
   LabourRoute: typeof LabourRoute
   LendingRoute: typeof LendingRoute
   LoginRoute: typeof LoginRoute
@@ -427,6 +434,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LabourRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/expenses': {
       id: '/expenses'
       path: '/expenses'
@@ -460,13 +474,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/home': {
-      id: '/home'
-      path: '/home'
-      fullPath: '/home'
-      preLoaderRoute: typeof HomeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/settings/users': {
@@ -530,11 +537,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  HomeRoute: HomeRoute,
   AttendanceRoute: AttendanceRoute,
   CustomersRoute: CustomersRoute,
   DashboardRoute: DashboardRoute,
   ExpensesRoute: ExpensesRoute,
+  HomeRoute: HomeRoute,
   LabourRoute: LabourRoute,
   LendingRoute: LendingRoute,
   LoginRoute: LoginRoute,

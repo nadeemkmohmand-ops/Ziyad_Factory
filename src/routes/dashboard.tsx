@@ -21,7 +21,7 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell, LineChart, Line, Legend,
 } from "recharts";
-import * as XLSX from "xlsx";
+
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
@@ -143,33 +143,41 @@ function Dashboard() {
   };
 
   /* ── File import (xlsx / csv / json) ── */
+  const parseCSV = (text: string) => {
+    const lines = text.trim().split("\n");
+    const headers = lines[0].split(",").map(h => h.trim());
+    return lines.slice(1).map(line => {
+      const vals = line.split(",");
+      return Object.fromEntries(headers.map((h, i) => [h, vals[i]?.trim() ?? ""]));
+    });
+  };
+
   const handleFileImport = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
     setImportFile(file.name);
     const ext = file.name.split(".").pop()?.toLowerCase();
     const reader = new FileReader();
-
     if (ext === "json") {
       reader.onload = (ev) => {
         try {
           const parsed = JSON.parse(ev.target?.result as string);
           setImportData(Array.isArray(parsed) ? parsed : [parsed]);
-          toast.success(`JSON لوڈ ہوا — ${Array.isArray(parsed)?parsed.length:1} ریکارڈ`);
+          toast.success(`JSON لوڈ ہوا — ${Array.isArray(parsed) ? parsed.length : 1} ریکارڈ`);
         } catch { toast.error("JSON فائل خراب ہے"); }
       };
       reader.readAsText(file);
-    } else if (ext === "csv" || ext === "xlsx" || ext === "xls") {
+    } else if (ext === "csv") {
       reader.onload = (ev) => {
-        const wb = XLSX.read(ev.target?.result, { type: "binary" });
-        const ws = wb.Sheets[wb.SheetNames[0]];
-        const data = XLSX.utils.sheet_to_json(ws);
-        setImportData(data as any[]);
-        toast.success(`فائل لوڈ ہوئی — ${data.length} ریکارڈ`);
+        const data = parseCSV(ev.target?.result as string);
+        setImportData(data);
+        toast.success(`CSV لوڈ ہوئی — ${data.length} ریکارڈ`);
       };
-      reader.readAsBinaryString(file);
+      reader.readAsText(file);
+    } else if (ext === "xlsx" || ext === "xls") {
+      toast.error("Excel فائل کو پہلے CSV میں تبدیل کریں / Convert Excel to CSV first");
     } else {
-      toast.error("صرف Excel, CSV, یا JSON فائل / Only Excel, CSV or JSON");
+      toast.error("صرف CSV یا JSON فائل / Only CSV or JSON supported");
     }
   };
 
