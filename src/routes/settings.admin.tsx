@@ -11,8 +11,10 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/lib/auth-context";
 import { toast } from "sonner";
-import { Download } from "lucide-react";
+import { Download, FileSpreadsheet, Trash2, Upload } from "lucide-react";
 import { PKR, fmtDate } from "@/lib/format";
+import { exportAllToExcel, downloadJsonBackup, clearAllData, restoreFromJson } from "@/lib/data-backup";
+import { useRef } from "react";
 
 export const Route = createFileRoute("/settings/admin")({
   component: () => (
