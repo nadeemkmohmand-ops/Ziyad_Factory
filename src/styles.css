@@ -158,6 +158,20 @@ input.font-urdu, textarea.font-urdu {
   direction: rtl;
 }
 
+/* Auto direction: English / numeric inputs stay LTR */
+[dir="ltr"] { text-align: left; }
+[dir="rtl"] { text-align: right; }
+input[type="email"], input[type="tel"], input[type="number"], input[type="url"], input[type="date"] {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Mobile: tables stay readable */
+@media (max-width: 640px) {
+  .marble-table { font-size: 0.78rem; }
+  .marble-table th, .marble-table td { padding: 0.4rem 0.5rem; }
+}
+
 /* Marble texture — subtle veining */
 .marble-texture {
   background-color: var(--color-sidebar);

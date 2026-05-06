@@ -89,10 +89,15 @@ export type Database = {
           credit_limit: number | null
           current_balance: number | null
           customer_type: string | null
+          email: string | null
           id: string
+          marble_size: string | null
+          marble_type: string | null
           name: string
           notes: string | null
           phone: string | null
+          pieces: number | null
+          price_per_piece: number | null
         }
         Insert: {
           address?: string | null
@@ -100,10 +105,15 @@ export type Database = {
           credit_limit?: number | null
           current_balance?: number | null
           customer_type?: string | null
+          email?: string | null
           id?: string
+          marble_size?: string | null
+          marble_type?: string | null
           name: string
           notes?: string | null
           phone?: string | null
+          pieces?: number | null
+          price_per_piece?: number | null
         }
         Update: {
           address?: string | null
@@ -111,10 +121,36 @@ export type Database = {
           credit_limit?: number | null
           current_balance?: number | null
           customer_type?: string | null
+          email?: string | null
           id?: string
+          marble_size?: string | null
+          marble_type?: string | null
           name?: string
           notes?: string | null
           phone?: string | null
+          pieces?: number | null
+          price_per_piece?: number | null
+        }
+        Relationships: []
+      }
+      expense_products: {
+        Row: {
+          created_at: string
+          display_order: number | null
+          id: string
+          label: string
+        }
+        Insert: {
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          label: string
+        }
+        Update: {
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          label?: string
         }
         Relationships: []
       }
@@ -125,6 +161,7 @@ export type Database = {
           created_at: string
           description: string | null
           expense_date: string | null
+          expense_product: string | null
           id: string
           paid_to: string | null
           receipt_url: string | null
@@ -135,6 +172,7 @@ export type Database = {
           created_at?: string
           description?: string | null
           expense_date?: string | null
+          expense_product?: string | null
           id?: string
           paid_to?: string | null
           receipt_url?: string | null
@@ -145,6 +183,7 @@ export type Database = {
           created_at?: string
           description?: string | null
           expense_date?: string | null
+          expense_product?: string | null
           id?: string
           paid_to?: string | null
           receipt_url?: string | null
@@ -313,47 +352,77 @@ export type Database = {
         Row: {
           amount: number | null
           amount_returned: number | null
+          contact_address: string | null
+          contact_email: string | null
+          contact_phone: string | null
           created_at: string
+          customer_id: string | null
           due_date: string | null
           id: string
-          interest_rate: number | null
-          interest_type: string | null
           is_settled: boolean | null
+          item_kind: string | null
+          marble_size: string | null
+          marble_type: string | null
           notes: string | null
           party_name: string
           party_type: string | null
+          price_per_unit: number | null
+          quantity: number | null
+          rock_type: string | null
+          supplier_id: string | null
           transaction_date: string | null
           transaction_type: string | null
+          unit: string | null
         }
         Insert: {
           amount?: number | null
           amount_returned?: number | null
+          contact_address?: string | null
+          contact_email?: string | null
+          contact_phone?: string | null
           created_at?: string
+          customer_id?: string | null
           due_date?: string | null
           id?: string
-          interest_rate?: number | null
-          interest_type?: string | null
           is_settled?: boolean | null
+          item_kind?: string | null
+          marble_size?: string | null
+          marble_type?: string | null
           notes?: string | null
           party_name: string
           party_type?: string | null
+          price_per_unit?: number | null
+          quantity?: number | null
+          rock_type?: string | null
+          supplier_id?: string | null
           transaction_date?: string | null
           transaction_type?: string | null
+          unit?: string | null
         }
         Update: {
           amount?: number | null
           amount_returned?: number | null
+          contact_address?: string | null
+          contact_email?: string | null
+          contact_phone?: string | null
           created_at?: string
+          customer_id?: string | null
           due_date?: string | null
           id?: string
-          interest_rate?: number | null
-          interest_type?: string | null
           is_settled?: boolean | null
+          item_kind?: string | null
+          marble_size?: string | null
+          marble_type?: string | null
           notes?: string | null
           party_name?: string
           party_type?: string | null
+          price_per_unit?: number | null
+          quantity?: number | null
+          rock_type?: string | null
+          supplier_id?: string | null
           transaction_date?: string | null
           transaction_type?: string | null
+          unit?: string | null
         }
         Relationships: []
       }
@@ -491,6 +560,27 @@ export type Database = {
           new_price_per_sqft?: number | null
           old_price_per_slab?: number | null
           old_price_per_sqft?: number | null
+        }
+        Relationships: []
+      }
+      marble_sizes: {
+        Row: {
+          created_at: string
+          display_order: number | null
+          id: string
+          label: string
+        }
+        Insert: {
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          label: string
+        }
+        Update: {
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          label?: string
         }
         Relationships: []
       }
@@ -850,30 +940,42 @@ export type Database = {
           address: string | null
           created_at: string
           current_balance: number | null
+          email: string | null
           id: string
           name: string
           notes: string | null
           phone: string | null
+          price_per_ton: number | null
+          quantity_tons: number | null
+          rock_type: string | null
           supply_type: string | null
         }
         Insert: {
           address?: string | null
           created_at?: string
           current_balance?: number | null
+          email?: string | null
           id?: string
           name: string
           notes?: string | null
           phone?: string | null
+          price_per_ton?: number | null
+          quantity_tons?: number | null
+          rock_type?: string | null
           supply_type?: string | null
         }
         Update: {
           address?: string | null
           created_at?: string
           current_balance?: number | null
+          email?: string | null
           id?: string
           name?: string
           notes?: string | null
           phone?: string | null
+          price_per_ton?: number | null
+          quantity_tons?: number | null
+          rock_type?: string | null
           supply_type?: string | null
         }
         Relationships: []
