@@ -102,30 +102,55 @@ function PriceHistory() {
 
 function Backup() {
   const [busy, setBusy] = useState(false);
-  const tables = ["customers", "suppliers", "marble_categories", "marble_photos", "raw_rock_inventory", "finished_marble_inventory",
-    "sales_orders", "sales_order_items", "payments", "lending_borrowing", "labour", "attendance", "salary_payments", "expenses",
-    "machine_equipment", "production_logs", "founders", "factory_info", "app_settings", "marble_price_history"] as const;
-  const exportAll = async () => {
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const exportJson = async () => {
     setBusy(true);
-    try {
-      const dump: Record<string, unknown> = { exported_at: new Date().toISOString() };
-      for (const t of tables) {
-        const { data } = await supabase.from(t).select("*");
-        dump[t] = data ?? [];
-      }
-      const blob = new Blob([JSON.stringify(dump, null, 2)], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url; a.download = `al-makkah-factory-backup-${new Date().toISOString().slice(0, 10)}.json`;
-      a.click(); URL.revokeObjectURL(url);
-      toast.success("بیک اپ مکمل ہوا / Backup downloaded");
-    } catch (e) { toast.error(String(e)); } finally { setBusy(false); }
+    try { await downloadJsonBackup(); toast.success("JSON بیک اپ ڈاؤنلوڈ ہو گیا"); }
+    catch (e) { toast.error(String(e)); } finally { setBusy(false); }
   };
+  const exportXlsx = async () => {
+    setBusy(true);
+    try { await exportAllToExcel(); toast.success("Excel ڈاؤنلوڈ ہو گیا"); }
+    catch (e) { toast.error(String(e)); } finally { setBusy(false); }
+  };
+  const clearAll = async () => {
+    if (!confirm("⚠️ تمام ڈیٹا حذف ہو جائے گا۔ پہلے خودکار بیک اپ ڈاؤنلوڈ ہوگا۔ کیا آپ یقینی ہیں؟")) return;
+    if (!confirm("آخری تصدیق: واقعی تمام ڈیٹا صاف کریں؟")) return;
+    setBusy(true);
+    try { await clearAllData(); toast.success("تمام ڈیٹا صاف ہو گیا — بیک اپ آپ کے ڈاؤنلوڈز میں ہے"); }
+    catch (e) { toast.error(String(e)); } finally { setBusy(false); }
+  };
+  const onRestore = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const f = e.target.files?.[0]; if (!f) return;
+    if (!confirm("بحالی شروع کریں؟ موجودہ ڈیٹا اوور رائٹ ہو سکتا ہے")) return;
+    setBusy(true);
+    const res = await restoreFromJson(f);
+    if (res.ok) toast.success(res.message); else toast.error(res.message);
+    setBusy(false);
+    if (fileRef.current) fileRef.current.value = "";
+  };
+
   return (
-    <Card className="p-6 mt-4 max-w-xl">
-      <h3 className="font-display text-lg mb-2">مکمل ڈیٹا بیک اپ / Full Data Backup</h3>
-      <p className="text-sm text-muted-foreground mb-4">تمام فیکٹری ڈیٹا ایک JSON فائل میں — Export all factory data as JSON.</p>
-      <Button onClick={exportAll} disabled={busy} className="bg-primary text-primary-foreground"><Download className="h-4 w-4" /> {busy ? "ایکسپورٹ ہو رہا ہے…" : "JSON بیک اپ ڈاؤنلوڈ"}</Button>
-    </Card>
+    <div className="grid gap-4 mt-4 md:grid-cols-2">
+      <Card className="p-6">
+        <h3 className="font-display text-lg mb-2">📊 ڈیٹا ایکسپورٹ</h3>
+        <p className="text-sm text-muted-foreground mb-4">تمام سیکشنز (سپلائر، گاہک، اخراجات وغیرہ) کا ڈیٹا ایک Excel فائل میں ہر ٹیبل کا الگ شیٹ + لیبل کے ساتھ۔</p>
+        <div className="flex flex-col gap-2">
+          <Button onClick={exportXlsx} disabled={busy} className="bg-primary text-primary-foreground"><FileSpreadsheet className="h-4 w-4" /> Excel ڈاؤنلوڈ کریں</Button>
+          <Button onClick={exportJson} disabled={busy} variant="outline"><Download className="h-4 w-4" /> JSON بیک اپ</Button>
+        </div>
+      </Card>
+
+      <Card className="p-6 border-destructive/40">
+        <h3 className="font-display text-lg mb-2 text-destructive">⚠️ تمام ڈیٹا صاف کریں</h3>
+        <p className="text-sm text-muted-foreground mb-4">حذف سے پہلے خودکار JSON بیک اپ ڈاؤنلوڈ ہوگا۔ بعد میں اسی فائل سے بحالی ممکن ہے۔</p>
+        <div className="flex flex-col gap-2">
+          <Button onClick={clearAll} disabled={busy} variant="destructive"><Trash2 className="h-4 w-4" /> سب کچھ حذف کریں</Button>
+          <input ref={fileRef} type="file" accept="application/json" hidden onChange={onRestore} />
+          <Button onClick={() => fileRef.current?.click()} disabled={busy} variant="outline"><Upload className="h-4 w-4" /> JSON سے بحال کریں</Button>
+        </div>
+      </Card>
+    </div>
   );
 }
