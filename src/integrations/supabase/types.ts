@@ -738,6 +738,7 @@ export type Database = {
           purchase_price_per_ton: number | null
           quantity_tons: number | null
           rock_name_urdu: string | null
+          supplier_id: string | null
           supplier_name: string | null
           total_cost: number | null
         }
@@ -749,6 +750,7 @@ export type Database = {
           purchase_price_per_ton?: number | null
           quantity_tons?: number | null
           rock_name_urdu?: string | null
+          supplier_id?: string | null
           supplier_name?: string | null
           total_cost?: number | null
         }
@@ -760,10 +762,19 @@ export type Database = {
           purchase_price_per_ton?: number | null
           quantity_tons?: number | null
           rock_name_urdu?: string | null
+          supplier_id?: string | null
           supplier_name?: string | null
           total_cost?: number | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "raw_rock_inventory_supplier_id_fkey"
+            columns: ["supplier_id"]
+            isOneToOne: false
+            referencedRelation: "suppliers"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       salary_payments: {
         Row: {
@@ -1007,6 +1018,14 @@ export type Database = {
     }
     Functions: {
       can_read: { Args: { _uid: string }; Returns: boolean }
+      decrement_finished_inventory: {
+        Args: { inv_id: string; sold_qty: number }
+        Returns: undefined
+      }
+      decrement_raw_rock: {
+        Args: { rock_id: string; used_tons: number }
+        Returns: undefined
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
