@@ -74,15 +74,8 @@ function Production() {
     });
     if (error) return toast.error(error.message);
 
-    // Deduct tons FIFO from raw rock
-    let remaining = tonsUsed;
-    for (const r of raws) {
-      if (remaining <= 0) break;
-      const have = Number(r.quantity_tons ?? 0);
-      const take = Math.min(have, remaining);
-      await supabase.from("raw_rock_inventory").update({ quantity_tons: have - take }).eq("id", r.id);
-      remaining -= take;
-    }
+    // Deduct tons FIFO from raw rock (atomic via RPC)
+    await decrementRawRockFIFO(tonsUsed);
 
     // Add finished stock
     if (form.category_id && form.sqft_produced) {
