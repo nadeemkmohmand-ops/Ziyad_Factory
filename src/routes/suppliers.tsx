@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { supabase } from "@/integrations/supabase/client";
+import { afterSupplierSave } from "@/lib/chain-reactions";
 import { PKR } from "@/lib/format";
 import { toast } from "sonner";
 import { Plus, Pencil, Trash2 } from "lucide-react";
@@ -50,10 +51,20 @@ function Suppliers() {
       price_per_ton: form.price_per_ton ? Number(form.price_per_ton) : null,
       notes: form.notes || null,
     };
-    const { error } = edit
-      ? await supabase.from("suppliers").update(payload).eq("id", edit.id)
-      : await supabase.from("suppliers").insert(payload);
-    if (error) return toast.error(error.message);
+    if (edit) {
+      const { error } = await supabase.from("suppliers").update(payload).eq("id", edit.id);
+      if (error) return toast.error(error.message);
+    } else {
+      const { data: ins, error } = await supabase.from("suppliers").insert(payload).select("id").single();
+      if (error || !ins) return toast.error(error?.message ?? "Save failed");
+      await afterSupplierSave({
+        supplier_id: ins.id,
+        name: payload.name,
+        rock_type: payload.rock_type,
+        quantity_tons: payload.quantity_tons,
+        price_per_ton: payload.price_per_ton,
+      });
+    }
     toast.success("محفوظ / Saved"); setOpen(false); void load();
   };
 

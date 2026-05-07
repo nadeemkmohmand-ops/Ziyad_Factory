@@ -166,6 +166,18 @@ input[type="email"], input[type="tel"], input[type="number"], input[type="url"],
   text-align: left;
 }
 
+/* Tables: allow rows to grow with long content */
+.marble-table td,
+.marble-table th {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  vertical-align: top;
+  padding: 10px 12px;
+  min-width: 80px;
+}
+.marble-table tr { height: auto !important; }
+
 /* Mobile: tables stay readable */
 @media (max-width: 640px) {
   .marble-table { font-size: 0.78rem; }
