@@ -52,18 +52,25 @@ function Salaries() {
   const [att, setAtt] = useState<A[]>([]);
   const [paid, setPaid] = useState<SP[]>([]);
   const [deductMap, setDeductMap] = useState<Record<string, string>>({});
+  const [otMul, setOtMul] = useState(1.5);
+  const [hoursPerDay, setHoursPerDay] = useState(8);
 
   const load = async () => {
     const start = new Date(year, month - 1, 1).toISOString().slice(0, 10);
     const end = new Date(year, month, 1).toISOString().slice(0, 10);
-    const [l, a, sp] = await Promise.all([
+    const [l, a, sp, s] = await Promise.all([
       supabase.from("labour").select("*").eq("is_active", true),
       supabase.from("attendance").select("labour_id, status, overtime_hours").gte("date", start).lt("date", end),
       supabase.from("salary_payments").select("*").eq("month", month).eq("year", year),
+      supabase.from("app_settings").select("overtime_multiplier, working_hours_per_day").maybeSingle(),
     ]);
     setLabour((l.data ?? []) as L[]);
     setAtt((a.data ?? []) as A[]);
     setPaid((sp.data ?? []) as SP[]);
+    if (s.data) {
+      setOtMul(Number(s.data.overtime_multiplier ?? 1.5));
+      setHoursPerDay(Number(s.data.working_hours_per_day ?? 8));
+    }
   };
   useEffect(() => { void load(); }, [month, year]);
 
