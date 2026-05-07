@@ -84,12 +84,12 @@ function Salaries() {
     let base = 0, overtimePay = 0;
     if (l.salary_type === "daily") {
       base = daysPresent * daily + halfDays * (daily / 2);
-      overtimePay = (overtimeHours * (daily / 8)) * 1.5;
+      overtimePay = (overtimeHours * (daily / hoursPerDay)) * otMul;
     } else {
       const monthly = Number(l.monthly_salary ?? 0);
       const dayEq = monthly / 30;
       base = monthly - absent * dayEq - halfDays * (dayEq / 2);
-      overtimePay = (overtimeHours * (dayEq / 8)) * 1.5;
+      overtimePay = (overtimeHours * (dayEq / hoursPerDay)) * otMul;
     }
     const deductions = Number(deductMap[l.id] ?? 0);
     const net = Math.max(0, base + overtimePay - deductions);
