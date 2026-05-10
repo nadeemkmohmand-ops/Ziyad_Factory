@@ -28,3 +28,16 @@ export function useLookup(table: "marble_sizes" | "expense_products") {
   };
   return { items, add, remove, reload: load };
 }
+
+export const JOB_ROLES = [
+  { value: "cutter",       urdu: "کٹر آپریٹر",    dailyRate: true  },
+  { value: "polisher",     urdu: "پالشر",          dailyRate: true  },
+  { value: "loader",       urdu: "لوڈر",           dailyRate: true  },
+  { value: "block_setter", urdu: "بلاک سیٹر",      dailyRate: true  },
+  { value: "supervisor",   urdu: "سپروائزر",       dailyRate: false },
+  { value: "electrician",  urdu: "الیکٹریشن",      dailyRate: false },
+  { value: "security",     urdu: "چوکیدار (رات)",  dailyRate: false },
+  { value: "manager",      urdu: "مینیجر",          dailyRate: false },
+  { value: "driver",       urdu: "ڈرائیور",         dailyRate: true  },
+  { value: "helper",       urdu: "ہیلپر",           dailyRate: true  },
+];
