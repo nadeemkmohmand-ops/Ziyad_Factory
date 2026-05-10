@@ -488,9 +488,9 @@ function Sales() {
                       {factory?.name_english ?? "Al-Makkah Factory"}
                     </div>
                     <div style={{ fontFamily: "'Noto Nastaliq Urdu', serif", fontSize: 13, color: "#555", direction: "rtl" }}>
-                      شریک بانی: زیاد خان
+                      بانی: زیاد خان
                     </div>
-                    <div style={{ fontSize: 11, color: "#888" }}>Co-Founder: Ziyad Khan</div>
+                    <div style={{ fontSize: 11, color: "#888" }}>Founder: Ziyad Khan</div>
                     <div className="text-xs text-gray-500 mt-1">{factory?.address ?? ""}</div>
                   </div>
                   <div className="text-right">
