@@ -34,19 +34,12 @@ function Founders() {
   };
   useEffect(() => { void load(); }, []);
 
-  /* Seed Ziyad Khan if no founders exist */
-  useEffect(() => {
-    if (rows.length === 0) {
-      // Offer to seed
-    }
-  }, [rows]);
-
   const seedZiyad = async () => {
     const { error } = await supabase.from("founders").insert({
       name_urdu: "زیاد خان",
       name_english: "Ziyad Khan",
-      designation_urdu: "شریک بانی",
-      designation_english: "Co-Founder",
+      designation_urdu: "بانی",
+      designation_english: "Founder",
       photo_url: null,
       display_order: 0,
     });
@@ -85,7 +78,7 @@ function Founders() {
       <PageHeader
         title="Founders"
         urdu="بانیان — المکہ فیکٹری"
-        subtitle="Al-Makkah Factory — Co-Founder: Ziyad Khan"
+        subtitle="Al-Makkah Factory — Founder: Ziyad Khan"
         actions={
           <div className="flex gap-2">
             {rows.length === 0 && (
@@ -104,9 +97,9 @@ function Founders() {
         <Card className="p-8 text-center border-primary/20">
           <Star className="h-12 w-12 text-primary/30 mx-auto mb-3" />
           <div className="font-urdu text-xl text-primary mb-2" style={{ direction: "rtl" }}>کوئی بانی نہیں</div>
-          <p className="text-sm text-muted-foreground mb-4">No founders added yet. Add Ziyad Khan as Co-Founder.</p>
+          <p className="text-sm text-muted-foreground mb-4">No founders added yet. Add Ziyad Khan as Founder.</p>
           <Button onClick={seedZiyad} className="bg-primary text-primary-foreground font-urdu gap-2">
-            <Star className="h-4 w-4" /> زیاد خان — شریک بانی شامل کریں
+            <Star className="h-4 w-4" /> زیاد خان — بانی شامل کریں
           </Button>
         </Card>
       )}
@@ -146,8 +139,8 @@ function Founders() {
           <div className="space-y-3">
             <div><Label className="font-urdu">اردو نام</Label><Input className="font-urdu text-lg" dir="rtl" value={form.name_urdu} onChange={(e) => setForm({ ...form, name_urdu: e.target.value })} placeholder="زیاد خان" /></div>
             <div><Label>English Name</Label><Input value={form.name_english} onChange={(e) => setForm({ ...form, name_english: e.target.value })} placeholder="Ziyad Khan" /></div>
-            <div><Label className="font-urdu">عہدہ (اردو)</Label><Input className="font-urdu" dir="rtl" value={form.designation_urdu} onChange={(e) => setForm({ ...form, designation_urdu: e.target.value })} placeholder="شریک بانی" /></div>
-            <div><Label>Designation (English)</Label><Input value={form.designation_english} onChange={(e) => setForm({ ...form, designation_english: e.target.value })} placeholder="Co-Founder" /></div>
+            <div><Label className="font-urdu">عہدہ (اردو)</Label><Input className="font-urdu" dir="rtl" value={form.designation_urdu} onChange={(e) => setForm({ ...form, designation_urdu: e.target.value })} placeholder="بانی" /></div>
+            <div><Label>Designation (English)</Label><Input value={form.designation_english} onChange={(e) => setForm({ ...form, designation_english: e.target.value })} placeholder="Founder" /></div>
             <div>
               <Label className="font-urdu">تصویر / Photo</Label>
               <Input type="file" accept="image/*" onChange={(e) => e.target.files?.[0] && upload(e.target.files[0])} />
