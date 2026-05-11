@@ -479,12 +479,12 @@ function Sales() {
 
               <div ref={invoiceRef} className="bg-white text-black p-8 rounded">
                 {/* Invoice Header */}
-                <div className="flex justify-between border-b-2 border-yellow-500 pb-4 mb-4">
+                <div className="flex justify-between border-b-2 border-blue-500 pb-4 mb-4">
                   <div>
-                    <div style={{ fontFamily: "'Noto Nastaliq Urdu', serif", fontSize: 30, color: "#c9a84c", direction: "rtl" }}>
+                    <div style={{ fontFamily: "'Noto Nastaliq Urdu', serif", fontSize: 30, color: "#0076D6", direction: "rtl" }}>
                       {factory?.name_urdu ?? "المکہ فیکٹری"}
                     </div>
-                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, color: "#1a1a2e" }}>
+                    <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 18, color: "#1e293b" }}>
                       {factory?.name_english ?? "Al-Makkah Factory"}
                     </div>
                     <div style={{ fontFamily: "'Noto Nastaliq Urdu', serif", fontSize: 13, color: "#555", direction: "rtl" }}>
@@ -512,12 +512,12 @@ function Sales() {
 
                 {/* Items Table */}
                 <table className="w-full text-sm mb-4">
-                  <thead style={{ background: "#1a1a2e" }}>
+                  <thead style={{ background: "#0076D6" }}>
                     <tr>
-                      <th className="text-left p-2 text-yellow-400" style={{ fontFamily: "'Noto Nastaliq Urdu', serif" }}>ماربل کی قسم / Item</th>
-                      <th className="text-right p-2 text-yellow-400">مقدار / Qty</th>
-                      <th className="text-right p-2 text-yellow-400">قیمت / Price</th>
-                      <th className="text-right p-2 text-yellow-400">کل / Total</th>
+                      <th className="text-left p-2 text-blue-100" style={{ fontFamily: "'Noto Nastaliq Urdu', serif" }}>ماربل کی قسم / Item</th>
+                      <th className="text-right p-2 text-blue-100">مقدار / Qty</th>
+                      <th className="text-right p-2 text-blue-100">قیمت / Price</th>
+                      <th className="text-right p-2 text-blue-100">کل / Total</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -554,7 +554,7 @@ function Sales() {
                     <div className="mt-6 border-t border-gray-400 w-32 text-xs text-center text-gray-500">زیاد خان</div>
                   </div>
                   <div className="text-center">
-                    <div style={{ fontFamily: "'Noto Nastaliq Urdu', serif", fontSize: 14, color: "#c9a84c", direction: "rtl" }}>
+                    <div style={{ fontFamily: "'Noto Nastaliq Urdu', serif", fontSize: 14, color: "#0076D6", direction: "rtl" }}>
                       شکریہ — کاروبار کا شکریہ
                     </div>
                     <div className="text-xs text-gray-400">Thank you for your business</div>
