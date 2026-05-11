@@ -34,9 +34,9 @@ function MarbleVeins() {
         <feTurbulence type="turbulence" baseFrequency="0.012 0.008" numOctaves="4" seed="3" result="noise" />
         <feDisplacementMap in="SourceGraphic" in2="noise" scale="180" xChannelSelector="R" yChannelSelector="G" />
       </filter>
-      <rect width="100%" height="100%" fill="none" stroke="#c9a84c" strokeWidth="1.5" filter="url(#turbulence)" />
-      <rect width="100%" height="100%" fill="none" stroke="#c9a84c" strokeWidth="0.8" filter="url(#turbulence)" x="20" y="40" />
-      <rect width="100%" height="100%" fill="none" stroke="#c9a84c" strokeWidth="0.5" filter="url(#turbulence)" x="-30" y="80" />
+      <rect width="100%" height="100%" fill="none" stroke="#0076D6" strokeWidth="1.5" filter="url(#turbulence)" />
+      <rect width="100%" height="100%" fill="none" stroke="#0076D6" strokeWidth="0.8" filter="url(#turbulence)" x="20" y="40" />
+      <rect width="100%" height="100%" fill="none" stroke="#0076D6" strokeWidth="0.5" filter="url(#turbulence)" x="-30" y="80" />
     </svg>
   );
 }
@@ -104,8 +104,8 @@ function HomePage() {
     <div className="min-h-screen bg-background overflow-x-hidden">
       {/* HERO */}
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,oklch(0.32_0.10_255/0.5),transparent)]"/>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_80%_at_80%_60%,oklch(0.74_0.13_85/0.07),transparent)]"/>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,hsl(207_100%_42%/0.08),transparent)]"/>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_80%_at_80%_60%,hsl(207_100%_42%/0.05),transparent)]"/>
         <MarbleVeins/>
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent"/>
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"/>
@@ -191,7 +191,7 @@ function HomePage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((f,i)=>(
             <motion.div key={f.title} initial={{opacity:0,y:24}} whileInView={{opacity:1,y:0}} viewport={{once:true,margin:"-60px"}} transition={{delay:i*0.07}} whileHover={{y:-4}} className="group relative p-6 rounded-2xl border border-primary/10 bg-card/50 hover:border-primary/40 hover:bg-card/80 transition-all duration-300 overflow-hidden">
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(ellipse_60%_60%_at_20%_20%,oklch(0.74_0.13_85/0.06),transparent)]"/>
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(ellipse_60%_60%_at_20%_20%,hsl(207_100%_42%/0.04),transparent)]"/>
               <div className="relative">
                 <div className="h-11 w-11 rounded-xl bg-primary/10 border border-primary/20 grid place-items-center text-primary mb-4 group-hover:bg-primary/20 transition-colors"><f.icon className="h-5 w-5"/></div>
                 <div className="font-urdu text-xl text-primary mb-0.5" style={{direction:"rtl"}}>{f.urdu}</div>
