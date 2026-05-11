@@ -34,9 +34,9 @@ function MarbleVeins() {
         <feTurbulence type="turbulence" baseFrequency="0.012 0.008" numOctaves="4" seed="3" result="noise" />
         <feDisplacementMap in="SourceGraphic" in2="noise" scale="180" xChannelSelector="R" yChannelSelector="G" />
       </filter>
-      <rect width="100%" height="100%" fill="none" stroke="#0076D6" strokeWidth="1.5" filter="url(#turbulence)" />
-      <rect width="100%" height="100%" fill="none" stroke="#0076D6" strokeWidth="0.8" filter="url(#turbulence)" x="20" y="40" />
-      <rect width="100%" height="100%" fill="none" stroke="#0076D6" strokeWidth="0.5" filter="url(#turbulence)" x="-30" y="80" />
+      <rect width="100%" height="100%" fill="none" stroke="hsl(207 100% 42%)" strokeWidth="1.5" filter="url(#turbulence)" />
+      <rect width="100%" height="100%" fill="none" stroke="hsl(207 100% 42%)" strokeWidth="0.8" filter="url(#turbulence)" x="20" y="40" />
+      <rect width="100%" height="100%" fill="none" stroke="hsl(207 100% 42%)" strokeWidth="0.5" filter="url(#turbulence)" x="-30" y="80" />
     </svg>
   );
 }
