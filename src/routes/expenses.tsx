@@ -173,7 +173,7 @@ function Expenses() {
               />
               <Bar dataKey="amt" radius={[3, 3, 0, 0]}>
                 {trend30.map((entry, i) => (
-                  <Cell key={i} fill={CAT_COLORS[entry.cat] ?? "#0076D6"} />
+                  <Cell key={i} fill={CAT_COLORS[entry.cat] ?? "hsl(207 100% 42%)"} />
                 ))}
               </Bar>
             </BarChart>
