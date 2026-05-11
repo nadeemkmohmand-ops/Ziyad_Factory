@@ -262,7 +262,7 @@ _زیاد خان — المکہ فیکٹری، ضلع مہمند_`
     { label: "تیار ماربل قیمت", sub: "Marble Inventory Value", value: PKR(kpis?.marbleValue), icon: Layers, link: "/inventory/finished" },
   ];
 
-  const PIE_COLORS = ["#0076D6", "#349EF4", "#2ecc71", "#e74c3c", "#a78bfa", "#C86F3C"];
+  const PIE_COLORS = ["hsl(207 100% 42%)", "hsl(207 80% 58%)", "hsl(142 71% 45%)", "hsl(0 84% 60%)", "hsl(256 60% 70%)", "hsl(22 56% 51%)"];
   const catKeys = catLine[0] ? Object.keys(catLine[0]).filter((k) => k !== "month") : [];
 
   return (
@@ -359,7 +359,7 @@ _زیاد خان — المکہ فیکٹری، ضلع مہمند_`
                   <XAxis dataKey="month" stroke="#94a3b8" fontSize={12} />
                   <YAxis stroke="#94a3b8" fontSize={12} />
                   <Tooltip contentStyle={{ background: "#ffffff", border: "1px solid rgba(0,118,214,0.25)" }} formatter={(v: unknown) => PKR(Number(v))} />
-                  <Bar dataKey="sales" fill="#0076D6" radius={[6, 6, 0, 0]} />
+                  <Bar dataKey="sales" fill="hsl(207 100% 42%)" radius={[6, 6, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
