@@ -253,11 +253,11 @@ function Suppliers() {
                   <div className="h-40">
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart data={chartData}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#ffffff15" />
+                        <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                         <XAxis dataKey="date" fontSize={10} stroke="#aaa" />
                         <YAxis fontSize={10} stroke="#aaa" />
-                        <Tooltip contentStyle={{ background: "#16213e", border: "1px solid #c9a84c40" }} formatter={(v: unknown) => PKR(Number(v))} />
-                        <Line type="monotone" dataKey="cost" stroke="#c9a84c" strokeWidth={2} dot={false} />
+                        <Tooltip contentStyle={{ background: "#ffffff", border: "1px solid rgba(0,118,214,0.25)" }} formatter={(v: unknown) => PKR(Number(v))} />
+                        <Line type="monotone" dataKey="cost" stroke="#0076D6" strokeWidth={2} dot={false} />
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
