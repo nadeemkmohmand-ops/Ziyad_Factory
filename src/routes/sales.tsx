@@ -481,7 +481,7 @@ function Sales() {
                 {/* Invoice Header */}
                 <div className="flex justify-between border-b-2 border-blue-500 pb-4 mb-4">
                   <div>
-                    <div style={{ fontFamily: "'Noto Nastaliq Urdu', serif", fontSize: 30, color: "#0076D6", direction: "rtl" }}>
+                    <div style={{ fontFamily: "'Noto Nastaliq Urdu', serif", fontSize: 30, color: "hsl(207 100% 42%)", direction: "rtl" }}>
                       {factory?.name_urdu ?? "المکہ فیکٹری"}
                     </div>
                     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 18, color: "#1e293b" }}>
@@ -512,7 +512,7 @@ function Sales() {
 
                 {/* Items Table */}
                 <table className="w-full text-sm mb-4">
-                  <thead style={{ background: "#0076D6" }}>
+                  <thead style={{ background: "hsl(207 100% 42%)" }}>
                     <tr>
                       <th className="text-left p-2 text-blue-100" style={{ fontFamily: "'Noto Nastaliq Urdu', serif" }}>ماربل کی قسم / Item</th>
                       <th className="text-right p-2 text-blue-100">مقدار / Qty</th>
@@ -554,7 +554,7 @@ function Sales() {
                     <div className="mt-6 border-t border-gray-400 w-32 text-xs text-center text-gray-500">زیاد خان</div>
                   </div>
                   <div className="text-center">
-                    <div style={{ fontFamily: "'Noto Nastaliq Urdu', serif", fontSize: 14, color: "#0076D6", direction: "rtl" }}>
+                    <div style={{ fontFamily: "'Noto Nastaliq Urdu', serif", fontSize: 14, color: "hsl(207 100% 42%)", direction: "rtl" }}>
                       شکریہ — کاروبار کا شکریہ
                     </div>
                     <div className="text-xs text-gray-400">Thank you for your business</div>
