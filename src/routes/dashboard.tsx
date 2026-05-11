@@ -196,7 +196,7 @@ function Dashboard() {
   const exportPDF = async () => {
     if (!dashRef.current) return;
     toast.info("PDF بن رہی ہے...");
-    const canvas = await html2canvas(dashRef.current, { scale: 1.5, useCORS: true, backgroundColor: "#16213e" });
+    const canvas = await html2canvas(dashRef.current, { scale: 1.5, useCORS: true, backgroundColor: "#f5f5f5" });
     const img = canvas.toDataURL("image/jpeg", 0.85);
     const pdf = new jsPDF({ orientation: "landscape", unit: "px", format: [canvas.width / 1.5, canvas.height / 1.5] });
     pdf.addImage(img, "JPEG", 0, 0, canvas.width / 1.5, canvas.height / 1.5);
@@ -262,7 +262,7 @@ _زیاد خان — المکہ فیکٹری، ضلع مہمند_`
     { label: "تیار ماربل قیمت", sub: "Marble Inventory Value", value: PKR(kpis?.marbleValue), icon: Layers, link: "/inventory/finished" },
   ];
 
-  const PIE_COLORS = ["#c9a84c", "#0f3460", "#2ecc71", "#e74c3c", "#a78bfa", "#f39c12"];
+  const PIE_COLORS = ["#0076D6", "#349EF4", "#2ecc71", "#e74c3c", "#a78bfa", "#C86F3C"];
   const catKeys = catLine[0] ? Object.keys(catLine[0]).filter((k) => k !== "month") : [];
 
   return (
@@ -355,11 +355,11 @@ _زیاد خان — المکہ فیکٹری، ضلع مہمند_`
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={monthly}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#ffffff15" />
-                  <XAxis dataKey="month" stroke="#aaa" fontSize={12} />
-                  <YAxis stroke="#aaa" fontSize={12} />
-                  <Tooltip contentStyle={{ background: "#16213e", border: "1px solid #c9a84c40" }} formatter={(v: unknown) => PKR(Number(v))} />
-                  <Bar dataKey="sales" fill="#c9a84c" radius={[6, 6, 0, 0]} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                  <XAxis dataKey="month" stroke="#94a3b8" fontSize={12} />
+                  <YAxis stroke="#94a3b8" fontSize={12} />
+                  <Tooltip contentStyle={{ background: "#ffffff", border: "1px solid rgba(0,118,214,0.25)" }} formatter={(v: unknown) => PKR(Number(v))} />
+                  <Bar dataKey="sales" fill="#0076D6" radius={[6, 6, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -373,7 +373,7 @@ _زیاد خان — المکہ فیکٹری، ضلع مہمند_`
                   <Pie data={pie} dataKey="value" nameKey="name" outerRadius={80} label>
                     {pie.map((_, i) => <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />)}
                   </Pie>
-                  <Tooltip contentStyle={{ background: "#16213e", border: "1px solid #c9a84c40" }} formatter={(v: unknown) => PKR(Number(v))} />
+                  <Tooltip contentStyle={{ background: "#ffffff", border: "1px solid rgba(0,118,214,0.25)" }} formatter={(v: unknown) => PKR(Number(v))} />
                 </PieChart>
               </ResponsiveContainer>
             </div>
@@ -386,10 +386,10 @@ _زیاد خان — المکہ فیکٹری، ضلع مہمند_`
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={catLine}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#ffffff15" />
-                <XAxis dataKey="month" stroke="#aaa" fontSize={12} />
-                <YAxis stroke="#aaa" fontSize={12} />
-                <Tooltip contentStyle={{ background: "#16213e", border: "1px solid #c9a84c40" }} formatter={(v: unknown) => PKR(Number(v))} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                <XAxis dataKey="month" stroke="#94a3b8" fontSize={12} />
+                <YAxis stroke="#94a3b8" fontSize={12} />
+                <Tooltip contentStyle={{ background: "#ffffff", border: "1px solid rgba(0,118,214,0.25)" }} formatter={(v: unknown) => PKR(Number(v))} />
                 <Legend />
                 {catKeys.map((k, i) => <Line key={k} type="monotone" dataKey={k} stroke={PIE_COLORS[i % PIE_COLORS.length]} strokeWidth={2} />)}
               </LineChart>
