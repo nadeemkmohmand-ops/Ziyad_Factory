@@ -141,6 +141,9 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
+    /* Prevent overscroll bounce on mobile */
+    overscroll-behavior: none;
+    -webkit-tap-highlight-color: transparent;
   }
   h1, h2, h3, h4, h5 { font-family: var(--font-display); letter-spacing: -0.01em; }
 }
@@ -221,3 +224,118 @@ input[type="email"], input[type="tel"], input[type="number"], input[type="url"],
 /* Striped/hover tables */
 .marble-table tbody tr:nth-child(odd) { background-color: oklch(0.20 0.04 278 / 0.5); }
 .marble-table tbody tr:hover { background-color: oklch(0.74 0.13 85 / 0.08); }
+
+/* ─── Mobile-First Enhancements ─── */
+
+/* Safe area padding for notched phones */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Smooth scrolling on mobile */
+@media (max-width: 768px) {
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Card hover effect for touch devices */
+@media (hover: hover) {
+  .touch-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -8px rgba(201, 168, 76, 0.15);
+  }
+}
+
+/* Better mobile dialog sizing */
+@media (max-width: 640px) {
+  [role="dialog"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    border-radius: 1rem 1rem 0 0 !important;
+    max-height: 90vh !important;
+  }
+}
+
+/* Mobile-friendly input sizing */
+@media (max-width: 640px) {
+  input, select, textarea {
+    font-size: 16px !important; /* Prevents iOS zoom on focus */
+  }
+}
+
+/* KPI card subtle animation */
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.1); }
+  50% { box-shadow: 0 0 20px 4px rgba(201, 168, 76, 0.15); }
+}
+
+.kpi-card-accent {
+  animation: pulse-gold 3s ease-in-out infinite;
+}
+
+/* Quick action card ripple */
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+}
+.ripple-effect::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(201,168,76,0.15) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.ripple-effect:active::after {
+  opacity: 1;
+}
+
+/* Bottom sheet style on mobile */
+.mobile-sheet [data-radix-popper-content-wrapper] {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: auto !important;
+  transform: none !important;
+}
+
+/* Scrollbar styling for dark theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.32 0.04 270 / 40%);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.74 0.13 85 / 30%);
+}
+
+/* Focus ring for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Number input spinner hide */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Print styles */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white !important; color: black !important; }
+}
