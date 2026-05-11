@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap');
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
@@ -36,7 +36,10 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-sidebar: var(--sidebar);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-primary-glow: var(--primary-glow);
+  --color-sidebar: var(--sidebar-background);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
@@ -45,94 +48,103 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  --font-display: 'Playfair Display', serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
   --font-urdu: 'Noto Nastaliq Urdu', serif;
 }
 
-/* Al-Madina Factory — Dark luxury palette */
+/* Copilot Light palette */
 :root {
-  --radius: 1rem;
+  --radius: 0.9rem;
 
-  /* #1a1a2e */
-  --background: oklch(0.18 0.04 280);
-  --foreground: oklch(0.94 0.005 280);
+  --background: 0 0% 98%;
+  --foreground: 220 13% 13%;
 
-  /* #16213e */
-  --secondary: oklch(0.24 0.06 265);
-  --secondary-foreground: oklch(0.94 0.005 280);
+  --card: 0 0% 100%;
+  --card-foreground: 220 13% 13%;
 
-  /* #0f3460 */
-  --surface: oklch(0.32 0.10 255);
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 13% 13%;
 
-  /* card slightly lighter than bg */
-  --card: oklch(0.22 0.05 275);
-  --card-foreground: oklch(0.94 0.005 280);
+  --primary: 207 100% 42%;
+  --primary-foreground: 0 0% 100%;
+  --primary-dark: 207 100% 32%;
+  --primary-light: 207 90% 58%;
+  --primary-glow: 207 100% 52%;
 
-  --popover: oklch(0.22 0.05 275);
-  --popover-foreground: oklch(0.94 0.005 280);
+  --secondary: 210 20% 96%;
+  --secondary-foreground: 220 13% 20%;
 
-  /* #c9a84c gold */
-  --primary: oklch(0.74 0.13 85);
-  --primary-foreground: oklch(0.18 0.04 280);
+  --surface: 210 16% 93%;
 
-  --muted: oklch(0.28 0.04 275);
-  --muted-foreground: oklch(0.68 0.02 275);
+  --muted: 210 16% 93%;
+  --muted-foreground: 220 9% 46%;
 
-  --accent: oklch(0.74 0.13 85);
-  --accent-foreground: oklch(0.18 0.04 280);
+  --accent: 22 56% 51%;
+  --accent-foreground: 0 0% 100%;
 
-  /* #e74c3c */
-  --destructive: oklch(0.62 0.22 27);
-  --destructive-foreground: oklch(0.98 0.005 280);
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
 
-  /* #2ecc71 */
-  --success: oklch(0.74 0.18 150);
-  /* #f39c12 */
-  --warning: oklch(0.75 0.16 70);
+  --success: 142 71% 45%;
+  --warning: 38 92% 50%;
 
-  --border: oklch(0.32 0.04 270 / 60%);
-  --input: oklch(0.28 0.04 275);
-  --ring: oklch(0.74 0.13 85);
+  --border: 210 16% 89%;
+  --input: 210 16% 89%;
+  --ring: 207 100% 42%;
 
-  --sidebar: oklch(0.16 0.04 280);
-  --sidebar-foreground: oklch(0.92 0.005 280);
-  --sidebar-primary: oklch(0.74 0.13 85);
-  --sidebar-primary-foreground: oklch(0.18 0.04 280);
-  --sidebar-accent: oklch(0.24 0.06 265);
-  --sidebar-accent-foreground: oklch(0.94 0.005 280);
-  --sidebar-border: oklch(0.32 0.04 270 / 50%);
-  --sidebar-ring: oklch(0.74 0.13 85);
+  --sidebar-background: 0 0% 100%;
+  --sidebar: var(--sidebar-background);
+  --sidebar-foreground: 220 13% 20%;
+  --sidebar-primary: 207 100% 42%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 210 20% 96%;
+  --sidebar-accent-foreground: 220 13% 20%;
+  --sidebar-border: 210 16% 89%;
+  --sidebar-ring: 207 100% 42%;
+
+  --gradient-hero: linear-gradient(135deg, hsl(207 100% 32%), hsl(207 100% 42%), hsl(207 90% 55%));
+  --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 20% 97%));
+  --gradient-accent: linear-gradient(135deg, hsl(22 56% 51%), hsl(23 45% 70%));
+  --shadow-card: 0 8px 24px -12px hsl(207 100% 42% / 0.14);
+  --shadow-elevated: 0 20px 46px -20px hsl(207 100% 42% / 0.22);
 }
 
 .dark {
-  --background: oklch(0.18 0.04 280);
-  --foreground: oklch(0.94 0.005 280);
-  --card: oklch(0.22 0.05 275);
-  --card-foreground: oklch(0.94 0.005 280);
-  --popover: oklch(0.22 0.05 275);
-  --popover-foreground: oklch(0.94 0.005 280);
-  --primary: oklch(0.74 0.13 85);
-  --primary-foreground: oklch(0.18 0.04 280);
-  --secondary: oklch(0.24 0.06 265);
-  --secondary-foreground: oklch(0.94 0.005 280);
-  --muted: oklch(0.28 0.04 275);
-  --muted-foreground: oklch(0.68 0.02 275);
-  --accent: oklch(0.74 0.13 85);
-  --accent-foreground: oklch(0.18 0.04 280);
-  --destructive: oklch(0.62 0.22 27);
-  --destructive-foreground: oklch(0.98 0.005 280);
-  --border: oklch(0.32 0.04 270 / 60%);
-  --input: oklch(0.28 0.04 275);
-  --ring: oklch(0.74 0.13 85);
-  --sidebar: oklch(0.16 0.04 280);
-  --sidebar-foreground: oklch(0.92 0.005 280);
-  --sidebar-primary: oklch(0.74 0.13 85);
-  --sidebar-primary-foreground: oklch(0.18 0.04 280);
-  --sidebar-accent: oklch(0.24 0.06 265);
-  --sidebar-accent-foreground: oklch(0.94 0.005 280);
-  --sidebar-border: oklch(0.32 0.04 270 / 50%);
-  --sidebar-ring: oklch(0.74 0.13 85);
+  --background: 0 0% 98%;
+  --foreground: 220 13% 13%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 13% 13%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 13% 13%;
+  --primary: 207 100% 42%;
+  --primary-foreground: 0 0% 100%;
+  --primary-dark: 207 100% 32%;
+  --primary-light: 207 90% 58%;
+  --primary-glow: 207 100% 52%;
+  --secondary: 210 20% 96%;
+  --secondary-foreground: 220 13% 20%;
+  --surface: 210 16% 93%;
+  --muted: 210 16% 93%;
+  --muted-foreground: 220 9% 46%;
+  --accent: 22 56% 51%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --success: 142 71% 45%;
+  --warning: 38 92% 50%;
+  --border: 210 16% 89%;
+  --input: 210 16% 89%;
+  --ring: 207 100% 42%;
+  --sidebar-background: 0 0% 100%;
+  --sidebar: var(--sidebar-background);
+  --sidebar-foreground: 220 13% 20%;
+  --sidebar-primary: 207 100% 42%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 210 20% 96%;
+  --sidebar-accent-foreground: 220 13% 20%;
+  --sidebar-border: 210 16% 89%;
+  --sidebar-ring: 207 100% 42%;
 }
 
 @layer base {
@@ -184,7 +196,7 @@ input[type="email"], input[type="tel"], input[type="number"], input[type="url"],
   .marble-table th, .marble-table td { padding: 0.4rem 0.5rem; }
 }
 
-/* Marble texture — subtle veining */
+/* Subtle texture — light veining */
 .marble-texture {
   background-color: var(--color-sidebar);
   background-image:
@@ -192,8 +204,8 @@ input[type="email"], input[type="tel"], input[type="number"], input[type="url"],
       115deg,
       transparent 0,
       transparent 18px,
-      rgba(255,255,255,0.025) 18px,
-      rgba(255,255,255,0.025) 19px,
+      rgba(0,0,0,0.015) 18px,
+      rgba(0,0,0,0.015) 19px,
       transparent 19px,
       transparent 42px
     ),
@@ -201,23 +213,23 @@ input[type="email"], input[type="tel"], input[type="number"], input[type="url"],
       75deg,
       transparent 0,
       transparent 35px,
-      rgba(201, 168, 76, 0.03) 35px,
-      rgba(201, 168, 76, 0.03) 36px,
+      hsl(207 100% 42% / 0.025) 35px,
+      hsl(207 100% 42% / 0.025) 36px,
       transparent 36px,
       transparent 80px
     ),
-    radial-gradient(ellipse at top left, rgba(201,168,76,0.06), transparent 60%);
+    radial-gradient(ellipse at top left, hsl(207 100% 42% / 0.04), transparent 60%);
 }
 
 .gold-shadow {
-  box-shadow: 0 10px 40px -10px rgba(201, 168, 76, 0.25),
-              0 4px 16px -4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 40px -10px hsl(207 100% 42% / 0.25),
+              0 4px 16px -4px rgba(0, 0, 0, 0.08);
 }
 
 .gold-glow {
-  box-shadow: 0 0 24px rgba(201, 168, 76, 0.35);
+  box-shadow: 0 0 24px hsl(207 100% 42% / 0.30);
 }
 
 /* Striped/hover tables */
-.marble-table tbody tr:nth-child(odd) { background-color: oklch(0.20 0.04 278 / 0.5); }
-.marble-table tbody tr:hover { background-color: oklch(0.74 0.13 85 / 0.08); }
+.marble-table tbody tr:nth-child(odd) { background-color: hsl(210 20% 96% / 0.5); }
+.marble-table tbody tr:hover { background-color: hsl(207 100% 42% / 0.06); }
