@@ -134,7 +134,7 @@ function Expenses() {
               <BarChart data={weekly7} margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
                 <Bar dataKey="amt" fill="#e74c3c" radius={[3, 3, 0, 0]} />
                 <Tooltip
-                  contentStyle={{ background: "#16213e", border: "1px solid #c9a84c40", fontSize: 11 }}
+                  contentStyle={{ background: "#ffffff", border: "1px solid rgba(0,118,214,0.25)", fontSize: 11 }}
                   formatter={(v: unknown) => PKR(Number(v))}
                   labelFormatter={(l) => l}
                 />
@@ -150,7 +150,7 @@ function Expenses() {
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={chartData}>
                 <XAxis dataKey="month" stroke="#aaa" fontSize={10} />
-                <Tooltip contentStyle={{ background: "#16213e", border: "1px solid #c9a84c40" }} formatter={(v: unknown) => PKR(Number(v))} />
+                <Tooltip contentStyle={{ background: "#ffffff", border: "1px solid rgba(0,118,214,0.25)" }} formatter={(v: unknown) => PKR(Number(v))} />
                 <Bar dataKey="amt" fill="#e74c3c" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
@@ -164,16 +164,16 @@ function Expenses() {
         <div className="h-48">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={trend30}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
               <XAxis dataKey="date" stroke="#aaa" fontSize={10} interval={4} />
               <YAxis stroke="#aaa" fontSize={10} />
               <Tooltip
-                contentStyle={{ background: "#16213e", border: "1px solid #c9a84c40" }}
+                contentStyle={{ background: "#ffffff", border: "1px solid rgba(0,118,214,0.25)" }}
                 formatter={(v: unknown) => PKR(Number(v))}
               />
               <Bar dataKey="amt" radius={[3, 3, 0, 0]}>
                 {trend30.map((entry, i) => (
-                  <Cell key={i} fill={CAT_COLORS[entry.cat] ?? "#c9a84c"} />
+                  <Cell key={i} fill={CAT_COLORS[entry.cat] ?? "#0076D6"} />
                 ))}
               </Bar>
             </BarChart>
