@@ -257,7 +257,7 @@ function Suppliers() {
                         <XAxis dataKey="date" fontSize={10} stroke="#aaa" />
                         <YAxis fontSize={10} stroke="#aaa" />
                         <Tooltip contentStyle={{ background: "#ffffff", border: "1px solid rgba(0,118,214,0.25)" }} formatter={(v: unknown) => PKR(Number(v))} />
-                        <Line type="monotone" dataKey="cost" stroke="#0076D6" strokeWidth={2} dot={false} />
+                        <Line type="monotone" dataKey="cost" stroke="hsl(207 100% 42%)" strokeWidth={2} dot={false} />
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
